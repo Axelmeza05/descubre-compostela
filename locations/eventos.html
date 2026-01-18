@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos | Municipio de Compostela</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --primary-color: #d35400;
+            --secondary-color: #2c3e50;
+            --bg-light: #fdfbf7;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding-bottom: 80px;
+        }
+
+        /* --- ESTILOS DEL BOTÓN VOLVER --- */
+        .btn-volver {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background: rgba(255, 255, 255, 1);
+            color: var(--primary-color);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .events-hero {
+            height: 40vh;
+            background-image: url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t39.30808-6/523378385_764884129387018_6552831738603318017_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=l_peSkEyIZIQ7kNvwHymHR9&_nc_oc=Adn17IQkMLxqGXKKTDimnrnyZ3FvOfk5w8lmCMIpRadUvHX-5aNPdSjd7EtgcWWBr-4&_nc_zt=23&_nc_ht=scontent.ftpq1-1.fna&_nc_gid=KuurBHU3SEq39_MZUHWqag&oh=00_Afp9NnCwZ4hWD67s7170ZR38cL2NQctbc_-rkA7q71K4Uw&oe=69660697');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .overlay-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Barra de Herramientas */
+        .toolbar-container {
+            background: white;
+            padding: 20px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+
+        .filter-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        select {
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .month-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+        }
+
+        /* Grid de Eventos */
+        .events-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tarjeta de Evento */
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card.cancelled {
+            opacity: 0.7;
+            filter: grayscale(50%);
+        }
+
+        .event-card.cancelled:hover {
+            transform: translateY(-3px);
+        }
+
+        .event-image {
+            height: 180px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .date-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border-radius: 8px;
+            padding: 5px 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .date-day {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .date-month {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .today-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        .cancelled-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+            z-index: 10;
+        }
+
+        .cancelled-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(231, 76, 60, 0.15);
+            z-index: 5;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 16px rgba(39, 174, 96, 0.6);
+            }
+        }
+
+        .event-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-location {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-title {
+            font-size: 1.2rem;
+            margin: 5px 0 10px 0;
+            color: var(--secondary-color);
+        }
+
+        .event-title.cancelled-title {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        /* NUEVO: Botón de ubicación en Google Maps */
+        .btn-location {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+            margin-top: auto;
+        }
+
+        .btn-location:hover {
+            background: linear-gradient(135deg, #3367d6 0%, #2d8e47 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4);
+        }
+
+        .btn-location i {
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toolbar-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .btn-volver {
+                top: 15px;
+                right: 15px;
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+
+            .today-badge,
+            .cancelled-badge {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+
+            .btn-location {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="events-hero">
+        <a href="../index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver al Mapa
+        </a>
+
+        <div class="overlay-hero"></div>
+        <div class="hero-content">
+            <h1>Agenda de Eventos</h1>
+            <p>Descubre la cultura, tradiciones y vida de nuestro municipio</p>
+        </div>
+    </header>
+
+    <section class="toolbar-container">
+        <div class="filter-wrapper">
+            <label for="location-select"><i class="fas fa-map-marker-alt"></i> Filtrar por zona:</label>
+            <select id="location-select">
+                <option value="all">Todo el Municipio</option>
+                <option value="Compostela">Compostela</option>
+                <option value="Guayabitos">Guayabitos</option>
+                <option value="La Peñita">La Peñita</option>
+                <option value="Las Varas">Las Varas</option>
+            </select>
+        </div>
+
+        <div class="month-nav">
+            <button id="prev-month" class="nav-arrow"><i class="fas fa-chevron-left"></i></button>
+            <h2 id="current-month-display">ENERO 2026</h2>
+            <button id="next-month" class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <main class="events-grid-container" id="events-container">
+    </main>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+
+            // 1. CONFIGURACIÓN SUPABASE
+            const supabaseUrl = 'https://rlkpwxonuxnieqrypnct.supabase.co';
+            const supabaseKey = 'sb_publishable_KpWvv6ec6_hg-1HFpEyZEw_9QlDxne2';
+            const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+            // 2. VARIABLES DE ESTADO
+            let todosLosEventos = [];
+            const hoy = new Date();
+            let fechaActual = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+
+            const nombresMeses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+
+            // 3. REFERENCIAS DOM
+            const container = document.getElementById('events-container');
+            const locationSelect = document.getElementById('location-select');
+            const monthDisplay = document.getElementById('current-month-display');
+            const btnPrev = document.getElementById('prev-month');
+            const btnNext = document.getElementById('next-month');
+
+            // 4. FUNCIÓN PARA VERIFICAR SI ES HOY
+            function esEventoHoy(fechaEvento) {
+                const hoy = new Date();
+                const hoyNormalizado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+                const eventoDate = new Date(fechaEvento + 'T00:00:00');
+                const eventoNormalizado = new Date(eventoDate.getFullYear(), eventoDate.getMonth(), eventoDate.getDate());
+
+                return hoyNormalizado.getTime() === eventoNormalizado.getTime();
+            }
+
+            // 5. FUNCIÓN: Verificar si el evento ya pasó
+            function eventoYaPaso(fechaEvento) {
+                const hoy = new Date();
+                const hoyNormalizado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+                const eventoDate = new Date(fechaEvento + 'T00:00:00');
+                const eventoNormalizado = new Date(eventoDate.getFullYear(), eventoDate.getMonth(), eventoDate.getDate());
+
+                return eventoNormalizado.getTime() < hoyNormalizado.getTime();
+            }
+
+            // 6. CARGA INICIAL
+            async function fetchEvents() {
+                const { data: eventos, error } = await _supabase
+                    .from('eventos')
+                    .select('*')
+                    .gte('fecha', '2026-01-01')
+                    .lte('fecha', '2026-12-31')
+                    .order('fecha', { ascending: true });
+
+                if (error) {
+                    console.error('Error Supabase:', error);
+                    container.innerHTML = '<p>Error cargando agenda.</p>';
+                    return;
+                }
+
+                todosLosEventos = eventos;
+                actualizarVista();
+            }
+
+            // 7. FILTRADO Y ACTUALIZACIÓN
+            function actualizarVista() {
+                const mesIndex = fechaActual.getMonth();
+                const anio = fechaActual.getFullYear();
+                monthDisplay.innerText = `${nombresMeses[mesIndex]} ${anio}`;
+
+                const zonaFiltro = locationSelect.value.toLowerCase();
+
+                const eventosFiltrados = todosLosEventos.filter(evento => {
+                    const fechaEvento = new Date(evento.fecha + "T00:00:00");
+
+                    if (eventoYaPaso(evento.fecha)) {
+                        return false;
+                    }
+
+                    const esMesCorrecto = (fechaEvento.getMonth() === mesIndex) &&
+                        (fechaEvento.getFullYear() === anio);
+
+                    let esZonaCorrecta = false;
+
+                    if (zonaFiltro === 'all') {
+                        esZonaCorrecta = true;
+                    } else if (evento.lugar) {
+                        esZonaCorrecta = evento.lugar.toLowerCase().includes(zonaFiltro);
+                    }
+
+                    return esMesCorrecto && esZonaCorrecta;
+                });
+
+                renderizarTarjetas(eventosFiltrados);
+            }
+
+            // 8. RENDERIZADO (MODIFICADO CON BOTÓN DE UBICACIÓN)
+            function renderizarTarjetas(lista) {
+                container.innerHTML = '';
+
+                if (lista.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:40px; width:100%; grid-column: 1 / -1;">
+                            <i class="fas fa-calendar-times" style="font-size:3rem; color:#ccc;"></i>
+                            <p style="color:#666; margin-top:10px;">No hay eventos programados en esta zona para este mes.</p>
+                        </div>`;
+                    return;
+                }
+
+                lista.forEach(ev => {
+                    const dateObj = new Date(ev.fecha + 'T00:00:00');
+                    const dia = dateObj.getDate();
+                    const mesCorto = nombresMeses[dateObj.getMonth()].substring(0, 3);
+                    const imagen = ev.imagen ? ev.imagen : 'https://via.placeholder.com/400x250?text=Evento';
+
+                    const isToday = esEventoHoy(ev.fecha);
+                    const isCancelled = ev.cancelado === true;
+
+                    let statusBadgeHTML = '';
+                    if (isCancelled) {
+                        statusBadgeHTML = '<div class="cancelled-badge"><i class="fas fa-ban"></i> CANCELADO</div>';
+                    } else if (isToday) {
+                        statusBadgeHTML = '<div class="today-badge">HOY</div>';
+                    }
+
+                    const cardClass = isCancelled ? 'event-card cancelled' : 'event-card';
+                    const titleClass = isCancelled ? 'event-title cancelled-title' : 'event-title';
+                    const overlayHTML = isCancelled ? '<div class="cancelled-overlay"></div>' : '';
+
+                    // NUEVO: Botón de ubicación (solo si existe el campo 'ubicacion')
+                    let locationButtonHTML = '';
+                    if (ev.ubicacion && ev.ubicacion.trim() !== '') {
+                        locationButtonHTML = `
+                            <a href="${ev.ubicacion}" target="_blank" rel="noopener noreferrer" class="btn-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ver Ubicación en Google Maps
+                            </a>
+                        `;
+                    }
+
+                    const card = document.createElement('article');
+                    card.className = cardClass;
+                    card.innerHTML = `
+                        <div class="event-image" style="background-image: url('${imagen}');">
+                            ${overlayHTML}
+                            ${statusBadgeHTML}
+                            <div class="date-badge">
+                                <span class="date-day">${dia}</span>
+                                <span class="date-month">${mesCorto}</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-location">
+                                <i class="fas fa-map-pin"></i> ${ev.lugar}
+                            </div>
+                            <h3 class="${titleClass}">${ev.titulo}</h3>
+                            <p class="event-desc">${ev.descripcion}</p>
+                            ${locationButtonHTML}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            // 9. EVENT LISTENERS
+            locationSelect.addEventListener('change', actualizarVista);
+
+            btnPrev.addEventListener('click', () => {
+                fechaActual.setMonth(fechaActual.getMonth() - 1);
+                actualizarVista();
+            });
+
+            btnNext.addEventListener('click', () => {
+                fechaActual.setMonth(fechaActual.getMonth() + 1);
+                actualizarVista();
+            });
+
+            fetchEvents();
+        });
+    </script>
+</body>
+
+</html>

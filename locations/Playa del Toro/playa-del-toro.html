@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa del Toro | Compostela</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES Y RESET (Paleta Playa del Toro: Naturaleza y Mar) --- */
+        :root {
+            /* Cambio de paleta: De Terracota a Tonos Selva/Mar */
+            --primary: #0f766e;
+            /* Verde Esmeralda Profundo (Selva) */
+            --primary-light: #14b8a6;
+            /* Turquesa (Agua cristalina) */
+            --accent: #fcd34d;
+            /* Amarillo Solar (Arena) */
+            --accent-hover: #d97706;
+            /* Ámbar */
+            --text-dark: #134e4a;
+            /* Verde muy oscuro para texto */
+            --text-light: #374151;
+            /* Gris neutro */
+            --bg-light: #f0fdfa;
+            /* Fondo menta muy suave */
+            --white: #ffffff;
+            /* Gradiente "Jungle Coast" */
+            --gradient-sunset: linear-gradient(135deg, #0f766e 0%, #0ea5e9 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 5%;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--primary);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .navbar.scrolled .back-btn {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .navbar.scrolled .back-btn:hover {
+            background: var(--primary-light);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            /* FOTO: Playa virgen, vegetación */
+            background: linear-gradient(rgba(0, 50, 40, 0.3), rgba(0, 40, 50, 0.4)), url('https://media.traveler.es/photos/61375e30f130191a954c6993/master/w_1600%2Cc_limit/222517.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+            /* Gradiente de texto Fresco */
+            background: -webkit-linear-gradient(#fff, #ccfbf1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* --- CONTENEDORES Y SECCIONES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* --- INTRO SECTION --- */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* --- CARDS GENERALES --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.15);
+            border-bottom-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: #ccfbf1;
+            /* Fondo menta claro */
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* --- GALERÍA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding-bottom: 2rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(15, 118, 110, 0.8));
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* --- SECCIÓN PLANIFICACIÓN (Reemplaza Gastronomía) --- */
+        .food-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .food-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            background: #ccfbf1;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* --- INFO PRACTICA (Banner Gradiente) --- */
+        .info-section {
+            background: var(--gradient-sunset);
+            /* Verde a Azul */
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ccfbf1;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* --- FOOTER & CTA --- */
+        .cta-box {
+            background: linear-gradient(135deg, #0f766e, #115e59);
+            /* Verde Profundo */
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            margin-top: -50px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(15, 118, 110, 0.3);
+        }
+
+        .btn-large {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: white;
+            color: var(--primary);
+            font-weight: 800;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: #ccfbf1;
+        }
+
+        footer {
+            background: #111827;
+            /* Almost Black */
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image img {
+                box-shadow: 10px 10px 0 var(--accent);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =====================================================
+   AJUSTE DEFINITIVO DE BACKGROUND PARA MÓVILES
+   (Hero y secciones con background-image)
+   ===================================================== */
+
+        @media (max-width: 768px) {
+
+            /* HERO */
+            .hero {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center top !important;
+                background-repeat: no-repeat;
+                min-height: 100svh;
+                /* Solución correcta para móviles */
+            }
+
+            /* Ajustes visuales del contenido */
+            .hero-content {
+                padding: 0 15px;
+            }
+
+            .hero-logo {
+                max-width: 280px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            /* CUALQUIER SECCIÓN CON BACKGROUND */
+            section[style*="background-image"],
+            .section-bg {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center top !important;
+                background-repeat: no-repeat;
+            }
+        }
+
+        /* Extra ajuste para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+
+            .hero {
+                background-position: center 20% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">Playa del Toro</div>
+        <a href="../../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al Mapa
+        </a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Playa del Toro</h1>
+            <p>El secreto mejor guardado de la Riviera Nayarit</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-text" data-aos="fade-right">
+                    <div class="section-title" style="text-align: left; margin-bottom: 2rem;">
+                        <h2>Naturaleza Virgen</h2>
+                    </div>
+                    <p>Playa del Toro es un santuario ecológico de apenas 200 metros de longitud, famoso por sus aguas
+                        color turquesa, arena fina y la exuberante vegetación tropical que la rodea.</p>
+                    <p>Al ser una playa virgen, ofrece una desconexión total. No encontrarás hoteles ni restaurantes,
+                        solo el sonido del mar, impresionantes acantilados y, en temporada de lluvias, una espectacular
+                        cascada que cae cerca de la orilla.</p>
+                </div>
+                <div class="intro-image" data-aos="fade-left">
+                    <img src="https://media.traveler.es/photos/61375e30030de94d067fbdd2/master/w_1600,c_limit/222508.jpg"
+                        alt="Vista Panorámica Playa del Toro">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Paisajes Inolvidables</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2022/11/playa-del-toro_guayabitosmx_1200-700x700.jpg"
+                        alt="Aguas Turquesas">
+                    <div class="overlay">Aguas Cristalinas</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://scontent.ftpq1-1.fna.fbcdn.net/v/t39.30808-6/560657196_1301878021728536_6999314458441240195_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Cldd4NcJnMgQ7kNvwHzfGkL&_nc_oc=Adm_Zu1r2Cipz6Jjb8pZO1ZRMEg8qxjJjn0QVCHkN9ANOydcMBxd7x2CwdgomrxPdoo&_nc_zt=23&_nc_ht=scontent.ftpq1-1.fna&_nc_gid=Tof5yfKmqj8JxSqz-djhXg&oh=00_AfpRsXDVP5Fmvp7-EaBJ_c_ge7IPPyflw2NRLPOmZgCCYg&oe=695DD6E8"
+                        alt="Sendero Ecológico">
+                    <div class="overlay">Senderismo</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://scontent.ftpq1-1.fna.fbcdn.net/v/t39.30808-6/485360831_2163043694098283_2243037872121027767_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=slbkZKJ8MnwQ7kNvwHFWrHA&_nc_oc=AdkHSvJ1Hcbz-B5eHnyaI3mFqllJGtPbhKUrnga5SDtKynIqz9AOhDp-s0_QlUdDxuk&_nc_zt=23&_nc_ht=scontent.ftpq1-1.fna&_nc_gid=Ap9Xn8JERyQCAt4ZkuZCOw&oh=00_AfrTqUqV6sBcMv0217QH06_aLGdwweWxTOeqXAqDUt80wQ&oe=695DE8E5"
+                        alt="Cascada Natural">
+                    <div class="overlay">Cascada Estacional</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://scontent.ftpq1-1.fna.fbcdn.net/v/t39.30808-6/485307346_9380557168664842_8733179048903619360_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=5OpGYt-MFmsQ7kNvwGJ9fam&_nc_oc=AdnWA-4KSHIH2SomuaPX0KJZkBJ2Xzrjtfsyj5NH48e0sgDUIB9PTdtE3XzxygZG508&_nc_zt=23&_nc_ht=scontent.ftpq1-1.fna&_nc_gid=-f4BjolUt3eSHxGqNsx0GA&oh=00_AfqYuxi377F9FnY-scTjPtGk0QvA_kQI8Fm4jr4RWfkSEA&oe=695DE831"
+                        alt="Relax Total">
+                    <div class="overlay">Mirador</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Aventúrate</h2>
+                <p>Actividades en contacto con la naturaleza</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-hiking"></i></div>
+                    <h3>Senderismo</h3>
+                    <p>Llega caminando desde Los Ayala por un sendero de selva media. Una caminata de 45 minutos con
+                        miradores espectaculares.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-water"></i></div>
+                    <h3>Cascada</h3>
+                    <p>Durante la temporada de lluvias, admira la caída de agua dulce que fluye desde la montaña hacia
+                        la arena.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-mask"></i></div>
+                    <h3>Snorkel</h3>
+                    <p>Sus aguas tranquilas y rocas submarinas son perfectas para observar peces de colores. ¡No olvides
+                        tu equipo!</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-ship"></i></div>
+                    <h3>Paseo en Lancha</h3>
+                    <p>Si prefieres comodidad, toma una lancha desde Rincón de Guayabitos o Los Ayala. Llegarás en solo
+                        10 minutos.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Mirador del Toro</h3>
+                    <p>En la cima del sendero se encuentra un punto panorámico donde obtendrás las mejores fotos de la
+                        bahía.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3>Playa Privada</h3>
+                    <p>Disfruta de la sensación de tener una isla para ti solo. Ideal para leer, meditar y descansar sin
+                        vendedores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #f0fdfa;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Guía del Viajero</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div data-aos="fade-right">
+                    <p style="margin-bottom: 20px;">Al ser una <strong>Reserva Ecológica Virgen</strong>, no existen
+                        comercios ni restaurantes en el sitio. Aquí te decimos qué llevar:</p>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-shopping-basket"></i></div>
+                        <div><strong>Picnic</strong><br><small>Lleva tus alimentos y bebidas preparadas desde Los
+                                Ayala.</small></div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-tint"></i></div>
+                        <div><strong>Hidratación</strong><br><small>El calor puede ser intenso en la caminata. Lleva
+                                agua extra.</small>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-trash-alt"></i></div>
+                        <div><strong>Eco-Friendly</strong><br><small>Importante: Regresa contigo toda tu basura. ¡Cuida
+                                el paraíso!</small>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: relative;" data-aos="fade-left">
+                    <img src="https://cdn.prod.website-files.com/649e1157d5c47b233d3364af/64fa38fc7c02627cec287c11_media.webp"
+                        style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(15, 118, 110, 0.2);"
+                        alt="Picnic en la Playa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-clock"></i>
+                    <h4>Horario Ideal</h4>
+                    <p>Mañana (9 AM - 2 PM)</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-map-signs"></i>
+                    <h4>Acceso</h4>
+                    <p>Lancha o Caminata (3km)</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-concierge-bell"></i>
+                    <h4>Servicios</h4>
+                    <p>Sin Servicios (Virgen)</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h4>Mejor Época</h4>
+                    <p>Noviembre - Mayo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="cta-box" data-aos="zoom-in">
+                <h2>Conecta con la Naturaleza</h2>
+                <p>Descubre el lado más salvaje y hermoso de Compostela.</p>
+                <a href="https://www.google.com/maps/place/Playa+Del+Toro/@21.0335108,-105.305707,17z/data=!3m1!4b1!4m6!3m5!1s0x84212472e94f3911:0x12a10bdccf046f34!8m2!3d21.0335058!4d-105.3031321!16s%2Fg%2F11bwpyykmq?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
+                    class="btn-large" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Ver en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Playa del Toro</h3>
+                    <p style="opacity: 0.7;">Municipio de Compostela, Nayarit.</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; opacity: 0.5; font-size: 0.8rem;">
+                &copy; 2026 Turismo Compostela.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // Efecto Sticky Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

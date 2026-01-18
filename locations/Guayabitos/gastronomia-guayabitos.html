@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastronomía | La Peñita de Jaltemba</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES TEMA GUAYABITOS --- */
+        :root {
+            --primary: #0891b2;
+            /* Turquesa oscuro */
+            --primary-light: #22d3ee;
+            /* Turquesa claro */
+            --primary-dark: #0e7490;
+            /* Azul petróleo */
+            --accent: #d97706;
+            /* Dorado/Arena */
+            --accent-light: #f59e0b;
+            --terracotta: #c2410c;
+            /* Color de contraste para botón Menú */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f0f9ff;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar-guayabitos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, white);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* COMPOSTELA */
+        .brand-main {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #e5e5e5);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* cerca de ti */
+        .brand-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #d8d8d8;
+            margin-left: 6px;
+        }
+
+
+        /* Ajuste Responsive para móviles */
+        @media (max-width: 768px) {
+            .logo-text {
+                flex-direction: column;
+                /* En móvil uno debajo del otro */
+                align-items: center;
+                gap: 0;
+            }
+
+            .brand-main {
+                font-size: 1.4rem;
+            }
+
+            .brand-slogan {
+                font-size: 1.1rem;
+                margin-top: -5px;
+            }
+        }
+
+        .btn-volver {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-gastronomia {
+            height: 40vh;
+            background-image: url('https://programadestinosmexico.com/wp-content/uploads/2023/08/GASTRONOMIA-RIVIERA-NAYARIT-scaled.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- BOTÓN DE FILTRO --- */
+        .btn-filter {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            z-index: 100;
+        }
+
+        .btn-filter:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* --- MODAL DE FILTROS --- */
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .filter-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .filter-modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-modal.active .filter-modal-content {
+            transform: scale(1);
+        }
+
+        .filter-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .filter-modal-header h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .close-filter-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s, transform 0.3s;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-filter-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .filter-option {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .filter-option i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .filter-option:hover {
+            background: #fff;
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .filter-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-option.active i {
+            color: white;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .container-gastronomia {
+            max-width: 1200px;
+            margin: 3rem auto 8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .restaurants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* --- CARDS --- */
+        .restaurant-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .restaurant-card.fade-in {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            background-color: #cbd5e1;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .restaurant-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .restaurant-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 0 0 0.8rem 0;
+            font-weight: 700;
+        }
+
+        .restaurant-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .btn-info {
+            flex: 1;
+            min-width: 45%;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .card-footer.has-precio .btn-precio {
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        .btn-direccion {
+            background-color: #ecfeff;
+            color: var(--primary-dark);
+            border: 1px solid #cffafe;
+        }
+
+        .btn-horario {
+            background-color: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+        }
+
+        .btn-precio {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .btn-direccion:hover {
+            background-color: #cffafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-horario:hover {
+            background-color: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        .btn-precio:hover {
+            background-color: #fde68a;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL DE INFORMACIÓN --- */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close-menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .close-menu-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            color: var(--accent);
+        }
+
+        .menu-content-box {
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .menu-content-box h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .overlay-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .overlay-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .overlay-link i {
+            width: 30px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .overlay-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+            color: var(--accent);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-icon-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #modal-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        #modal-info {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Botón Mapas */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(8, 145, 178, 0.3);
+        }
+
+        .btn-maps:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Botón Menú */
+        .btn-menu {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(194, 65, 12, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-menu:hover {
+            background-color: #9a3412;
+            /* Terracotta más oscuro */
+            transform: translateY(-2px);
+        }
+
+        .btn-maps.hidden,
+        .btn-menu.hidden {
+            display: none !important;
+        }
+
+        /* ========================================================
+           MENÚ FLOTANTE (ESTILO PASTILLA)
+           ======================================================== */
+        .floating-nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1500;
+            pointer-events: none;
+
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-nav-container.hidden-by-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .floating-nav-container.stopped {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: auto;
+        }
+
+        .floating-nav {
+            pointer-events: auto;
+            background-color: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 25px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-pill-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-pill-btn:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .pill-icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        .pill-text {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .main-btn {
+            position: relative;
+            top: -15px;
+        }
+
+        .pill-icon-main {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.4);
+            border: 4px solid #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover .pill-icon-main {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.6);
+        }
+
+        .pill-text-main {
+            margin-top: 5px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* ========================================================
+           MENÚ EMERGENTE COMPLETO (DISEÑO UNIFICADO)
+           ======================================================== */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-content {
+            background: transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            /* Ocultar scrollbar pero mantener funcionalidad */
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        .menu-overlay.active .menu-content {
+            transform: scale(1);
+        }
+
+        .menu-header {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: none;
+        }
+
+        .menu-title-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        .menu-close:active {
+            transform: rotate(90deg) scale(0.9);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            background: transparent;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            /* Mejoras para táctil */
+            min-height: 60px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-item:active {
+            transform: translateX(5px) scale(0.98);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .menu-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary, #FF8C42);
+            transition: all 0.3s;
+            flex-shrink: 0;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .menu-item:hover .menu-item-icon {
+            transform: scale(1.2);
+        }
+
+        .menu-item:active .menu-item-icon {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar personalizada */
+        .menu-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .menu-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .menu-title-text {
+                font-size: 1.5rem;
+            }
+
+            .menu-item {
+                font-size: 1rem;
+                padding: 1.3rem 1.2rem;
+                min-height: 65px;
+                gap: 12px;
+            }
+
+            .menu-item-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 1.4rem 1rem;
+                min-height: 70px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .restaurants-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .restaurants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-gastronomia {
+                height: 35vh;
+            }
+
+            .navbar-guayabitos {
+                padding: 1rem;
+            }
+
+            .floating-nav {
+                padding: 5px 15px;
+                gap: 15px;
+            }
+
+            .pill-icon-main {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .main-btn {
+                top: -10px;
+            }
+
+            .btn-filter {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar-guayabitos">
+        <div class="logo-container">
+            <h1 class="logo-text">
+                <span class="brand-main">GUAYABITOS</span>
+                <span class="brand-slogan">cerca de ti</span>
+            </h1>
+        </div>
+        <a href="guayabitos.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </nav>
+
+    <header class="hero-gastronomia">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Gastronomía</h1>
+                <p class="banner-subtitle">
+                    Descubre la deliciosa comida que hay en Guayabitos
+                </p>
+            </div>
+
+            <button id="btn-filter" class="btn-filter" aria-label="Filtrar">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container-gastronomia">
+        <div class="restaurants-grid">
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="../../images/guayabitos/rest-pineda/gastronomia-pineda.jpeg" alt="Pineda's">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Restaurante Pineda</h3>
+                    <p class="restaurant-description">Restaurante de mariscos y cocina nayarita frente al mar con más de
+                        40 años de tradición, famoso por su pescado zarandeado y mariscadas.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Restaurante Pineda"
+                            data-info="Carr. a Los Ayala 5, Centro, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Restaurante+Pineda/@21.0239493,-105.2764322,17z/data=!4m6!3m5!1s0x8421245aa5178585:0xe0d635b0e43c31b3!8m2!3d21.025056!4d-105.2788033!16s%2Fg%2F1s04g0y16?entry=ttu&g_ep=EgoyMDI2MDEwNi4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Domingo<br>11:00 am a 7:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200 - $300 MXN p/p"
+                            data-menu-link="https://restaurantepineda.mx/Menu-alimentos.pdf">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="../../images/guayabitos/rest-monalisa/monalisa1.jpeg" alt="Pizzas Mona Lisa">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Pizzas Mona Lisa</h3>
+                    <p class="restaurant-description">Pizzería local en Rincón de Guayabitos conocida por sus pizzas
+                        artesanales cocinadas en horno tradicional, con ambiente familiar y opciones casuales perfectas
+                        para una comida o cena relajada tras un día de playa.</p>
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Pizzas Mona Lisa"
+                            data-info="Sol Nuevo 10, Rincón de Guayabitos, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Pizzas+Mona+Lisa/@21.0245525,-105.2718234,17z/data=!3m1!4b1!4m6!3m5!1s0x84212452d0bd78f9:0x2ae112598068073c!8m2!3d21.0245476!4d-105.2669525!16s%2Fg%2F11bzvxmdcm?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Martes a Domingo: 4:00 pm – 10:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 – $200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/480071555_9265682493489155_4764316759481393944_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uxOLPo9t8YwQ7kNvwF1FznW&_nc_oc=AdmkqpjjgIbcTQHeU9_kmNQ_9E4ArLmrCazXCvtP0IookW0k7jAO4iUE88AQqbpCJv_WyJKjO0_6VdGtBGiR29gd&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=4Yguye3tgIsr0VHT5ysVmA&oh=00_Afp5TbFW6OTiMuxoVjuYoIMOV9yPLBORv525XVhCBuS-MQ&oe=696DEEDE"
+                        alt="Vista Guayabitos">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Vista Guayabitos</h3>
+                    <p class="restaurant-description">Restaurante con una vista espectacular a la Bahía de Guayabitos,
+                        ideal para disfrutar de mariscos y comida mexicana con un ambiente agradable y vistas al
+                        atardecer.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Vista Guayabitos"
+                            data-info="Carr. a Los Ayala km. 1.5, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Vista+Guayabitos/@21.026535,-105.2818906,17z/data=!3m1!4b1!4m6!3m5!1s0x1156091f9848f3f7:0xe0d992a7174187ed!8m2!3d21.02653!4d-105.2793157!16s%2Fg%2F11b6q2qm6j?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a domingo de 11:00 am a 9:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200–$350 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="snacks">
+                <div class="card-image">
+                    <img src="https://restaurantbuhardilla.com/images/buhardilla2.jpg" alt="Buhardilla">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Buhardilla</h3>
+                    <p class="restaurant-description">Restaurante con un concepto diferente que combina cocina italiana
+                        y argentina con ingredientes frescos; ofrece pizzas, cortes a la leña, pastas y ensaladas en un
+                        ambiente artístico y acogedor.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Buhardilla"
+                            data-info="63724, Rtno. Jacarandas 4, 63727 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Buhardilla/@21.0248834,-105.2704784,17z/data=!3m2!4b1!5s0x84212452e869b305:0xb1bf4e1ee91c1fc!4m6!3m5!1s0x84212452e85d0b65:0xdfe504c64f1fc66a!8m2!3d21.0248784!4d-105.2679035!16s%2Fg%2F11gf8gh4qb?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Martes a domingo de 3:00 pm a 10:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200–$350 MXN p/p"
+                            data-menu-link="https://restaurantbuhardilla.com/assets/menu_alimento_2020_ingles_compressed.pdf">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mexicana">
+                <div class="card-image">
+                    <img src="https://images.squarespace-cdn.com/content/v1/64079a35213f034fa7755acb/1678299898079-PXJB9PIIW3T6C4CD3KLW/2.jpg"
+                        alt="Mexcala">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Mexcala</h3>
+                    <p class="restaurant-description">Restaurante con enfoque en cocina mexicana tradicional y platillos
+                        populares con un toque local, ideal para comida casual y familiar.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Mexcala"
+                            data-info="C. Ceibas 1, Sin Nombre Loc. Rincón de Guayabitos, 63724 La Peñita de Jaltemba, Nay."
+                            data-link="https://www.google.com/maps/place/Mexcala/@21.0215706,-105.2759298,18z/data=!4m10!1m2!2m1!1sMexcala!3m6!1s0x8421253421cfb16f:0x6a9be2ac619e537b!8m2!3d21.0214963!4d-105.2737492!15sCgdNZXhjYWxhWgkiB21leGNhbGGSAQpyZXN0YXVyYW504AEA!16s%2Fg%2F11rjyw591j?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miércoles a Lunes de 07:00 am a 10:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200–$350 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/606724636_1434404125357702_7746926288961952422_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=eTOUass2Uo0Q7kNvwGscd8B&_nc_oc=Adlu7GbPqWlbAAxI_rjRs3rgkvVUIr-63D66bf6PZv0HNCfkzgkbcwXdC9twCqdiZbH6C92NUZq8tMjpJiqoG8dC&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=WPBjomiR3UnMBXEVkquyiQ&oh=00_Afop02JDf078zexZw9DVFcfPfFXkXQQrYYJHbgEUZwzcVA&oe=696DC062"
+                        alt="Restaurant Los Helechos">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Restaurant Los Helechos</h3>
+                    <p class="restaurant-description">Restaurante con enfoque en cocina mexicana y mariscos en un
+                        ambiente informal y acogedor, ideal para desayunos y comidas locales.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Restaurant Los Helechos"
+                            data-info="Av. Sol Nuevo 34, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Restaurant+Los+Helechos/@21.0236805,-105.2710857,17z/data=!3m2!4b1!5s0x842124530338d77f:0xb6772311053666f!4m6!3m5!1s0x84212453049ef9ff:0x10dfbcb0f44e5b0a!8m2!3d21.0236755!4d-105.2685108!16s%2Fg%2F11h3_jkv9n?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Domingo de 07:30 am a 2:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100–$200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="internacional">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/490839779_1337877944589965_4274722503630530085_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=3di3HoNY7ZcQ7kNvwFEeO8V&_nc_oc=AdkcPBF5qtcRu0brlMNmleVpJElCD0fSxBUyTtSR7EmJ6uVMUez1djx2YRsaH7LJW_1NQdBkBpEVYr9iqDHQ0-Us&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=rNicHaYZnxkVM2Ln7XYJoA&oh=00_AfolpZIEpWzxRDZbw068xIj8ZgH13bfu7RUn3O1zw2yG8A&oe=696DC3F0"
+                        alt="La Piña Loca">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">La Piña Loca</h3>
+                    <p class="restaurant-description">Cocina internacional, hamburguesas gourmet y bebidas tropicales.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="La Piña Loca" data-info="Av. Sol Nuevo #23."
+                            data-link="https://goo.gl/maps/placeholder">
+                            <i class="fas fa-info-circle"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Martes a Domingo<br>1:00 pm a 10:00 pm">
+                            <i class="fas fa-info-circle"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $150 - $300 MXN p/p">
+                            <i class="fas fa-info-circle"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-2.fna.fbcdn.net/v/t39.30808-6/486406008_1165655878685510_3627208904052276064_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=bWpX-alr3E4Q7kNvwGSzEcA&_nc_oc=AdkBXu2LhqPoZYOelOtWoK3-96GvhNv3lBBJaG0CNk85IzYgALlbe5_x1ueMJvnbrhpzgCkwZeGxDyKZTKZXp5Tz&_nc_zt=23&_nc_ht=scontent.fgdl2-2.fna&_nc_gid=qhPAI2zvkek-BXzP3PhRwQ&oh=00_Afo8KaObre5HVc3T55mpmHQlEHUiOqPzPE-ptvo6V-wHoQ&oe=6971CDE9"
+                        alt="Victor's Beach Bar ( La Castilla )">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Victor's Beach Bar ( La Castilla )</h3>
+                    <p class="restaurant-description">Bar y restaurante playero con ambiente relajado ideal para tragos,
+                        snacks y comidas ligeras junto al mar.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Victor's Beach Bar ( La Castilla )"
+                            data-info="Albatros 1, Fte la playa, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Victor's+Beach+Bar+(+La+Castilla+)/@21.0307039,-105.2659113,17z/data=!3m1!4b1!4m6!3m5!1s0x842125b084dac189:0x614bec00e375f544!8m2!3d21.0307039!4d-105.2633364!16s%2Fg%2F11gy7mw4ys?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-info-circle"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Domingo - 9:00 am a 6:00 pm">
+                            <i class="fas fa-info-circle"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $150 - $300 MXN p/p">
+                            <i class="fas fa-info-circle"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/7e/0f/4f/caption.jpg?w=1100&h=1100&s=1"
+                        alt="Guayami Vice">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Guayami Vice</h3>
+                    <p class="restaurant-description">Restaurante-bar frente a la playa con cocina mexicana y mariscos,
+                        así como bebidas refrescantes.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Guayami Vice"
+                            data-info="Emilio M. Gonzales 58-G Rincón de Guayabitos, 63724 Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Guayami+Vice/@21.029654,-105.2668849,17z/data=!3m1!4b1!4m6!3m5!1s0x842125a4b99dba07:0x5fe3d029b2df1029!8m2!3d21.029654!4d-105.26431!16s%2Fg%2F11vr9b50z4?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-info-circle"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miercoles a Lunes - 12:00 am a 6:00 pm">
+                            <i class="fas fa-info-circle"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $300 - $400 MXN p/p">
+                            <i class="fas fa-info-circle"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/599940962_841924855353508_7165324246405406809_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=rbW8zE1pLOEQ7kNvwG7TrQr&_nc_oc=AdmCn_2krOM9JSK-GM5k-wP0Ss1O6lY-ucUAetZytiQKu35RY7_74vhS8r1X6WKzQKRVOLeW6YKOJhUQvxy8EqUl&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=T2m_MyPR-Mu1UDTaT1pDHQ&oh=00_Afos9HqDghtLx89DHs4sSQiEIpg2hxjk6pB8u4BSJ7zNDA&oe=6971A5F3"
+                        alt="Restaurante El Gómez">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Restaurante El Gómez</h3>
+                    <p class="restaurant-description">Restaurante-bar con mariscos, platillos mexicanos y
+                        entretenimiento (karaoke), muy popular entre locales y visitantes por su ambiente animado en la
+                        zona de Guayabitos.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Restaurante El Gómez"
+                            data-info="Tepic - Puerto Vallarta kilómetro 92, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Restaurante+El+G%C3%B3mez/@21.0245775,-105.2661882,17z/data=!3m1!4b1!4m6!3m5!1s0x842125c57dce59d1:0x7af2699531cb2060!8m2!3d21.0245775!4d-105.2636133!16s%2Fg%2F11jsl1jjg3?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-info-circle"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miercoles a Lunes - 1:00 pm a 10:00 pm">
+                            <i class="fas fa-info-circle"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200 - $400 MXN p/p">
+                            <i class="fas fa-info-circle"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/490461969_1167086368760518_7660215918344947057_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ivKn5I-YUpAQ7kNvwH7bzqc&_nc_oc=Adk9jT9VHMb2dY6E-5ynx_rmLlEIRZ1Puo45HRtSBZLrQz_mheVCsuUCv4kHUFQm_6bsYtuHyc2luuiT8JbwJ1bo&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=QFI6O6hU-u1wJsybNRNsqg&oh=00_AfoC1c5nm4640NGb1ZGlx0ZaJ7yIja_W3acS53s1ZZLEIQ&oe=6971D29C"
+                        alt="Barba Roja Mariscos & Tacos">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Barba Roja Mariscos & Tacos</h3>
+                    <p class="restaurant-description">Bar de mariscos y tacos con buen ambiente y sabor local.
+                        Cuentan con tacos de mariscos, tostadas y platillos, ideal para
+                        un almuerzo relajado o cena ligera.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Barba Roja Mariscos & Tacos"
+                            data-info="Av. Sol Nuevo s/n, Centro, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Barba+Roja+Mariscos+%26+Tacos/@21.0261846,-105.2659762,17z/data=!3m1!4b1!4m6!3m5!1s0x8421250666b50413:0xc3477f263f1b3a62!8m2!3d21.0261846!4d-105.2634013!16s%2Fg%2F11j8k5yk6_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-info-circle"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miercoles a Lunes - 11:00 am a 11:00 pm">
+                            <i class="fas fa-info-circle"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $200 - $400 MXN p/p">
+                            <i class="fas fa-info-circle"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <div id="filter-modal" class="filter-modal">
+        <div class="filter-modal-content">
+            <div class="filter-modal-header">
+                <h3>Tipo de Cocina</h3>
+                <button class="close-filter-modal" id="close-filter">×</button>
+            </div>
+
+            <div class="filter-options">
+                <div class="filter-option active" data-filter="all">
+                    <i class="fas fa-utensils"></i> Todos
+                </div>
+                <div class="filter-option" data-filter="mariscos">
+                    <i class="fas fa-fish"></i> Mariscos
+                </div>
+                <div class="filter-option" data-filter="mexicana">
+                    <i class="fas fa-pepper-hot"></i> Comida Mexicana
+                </div>
+                <div class="filter-option" data-filter="internacional">
+                    <i class="fas fa-globe-americas"></i> Internacional
+                </div>
+                <div class="filter-option" data-filter="snacks">
+                    <i class="fas fa-ice-cream"></i> Snacks
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-icon-header">
+                <i class="fas fa-info-circle" id="modal-icon"></i>
+            </div>
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-info">Información detallada...</p>
+            <a href="#" target="_blank" id="modal-map-btn" class="btn-maps hidden">
+                <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+            </a>
+            <a href="#" target="_blank" id="modal-menu-btn" class="btn-menu hidden">
+                <i class="fas fa-book-open"></i> Ver Menú Completo
+            </a>
+        </div>
+    </div>
+
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav">
+            <button class="nav-pill-btn" onclick="window.location.href='../../index.html#mapa-section'">
+                <div class="pill-icon"><i class="fas fa-home"></i></div>
+                <span class="pill-text">INICIO</span>
+            </button>
+            <button class="nav-pill-btn main-btn" onclick="toggleOverlayMenu()">
+                <div class="pill-icon-main"><i class="fas fa-bars"></i></div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+            <button class="nav-pill-btn" onclick="window.location.href='../eventos.html'">
+                <div class="pill-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="pill-text">EVENTOS</span>
+            </button>
+        </nav>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="btn-menu-close" class="menu-close">×</button>
+            <div class="menu-header">
+                <h2 class="menu-title-text">Explora Guayabitos</h2>
+            </div>
+            <nav class="menu-list">
+                <a href="atractivos-turisticos-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-landmark"></i>
+                    </span>
+                    Atractivos Turísticos
+                </a>
+                <a href="hospedajes-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-hotel"></i>
+                    </span>
+                    Hospedaje
+                </a>
+                <a href="gastronomia-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                    Gastronomía
+                </a>
+                <a href="isla-coral.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </span>
+                    Isla del Coral
+                </a>
+                <a href="operadores-turisticos-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </span>
+                    Operadores Turísticos
+                </a>
+                <a href="eventos-temporada-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </span>
+                    Eventos de Temporada
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-top: 1rem;">&copy; 2026 Turismo Compostela - Guayabitos</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800 });
+
+        function toggleOverlayMenu() {
+            const overlay = document.getElementById('menu-overlay');
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            overlay.classList.toggle('active');
+
+            if (overlay.classList.contains('active')) {
+                floatingNav?.classList.add('hidden-by-overlay');
+                document.body.style.overflow = 'hidden';
+            } else {
+                floatingNav?.classList.remove('hidden-by-overlay');
+                document.body.style.overflow = '';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            function hideFloatingNav() {
+                floatingNav?.classList.add('hidden-by-overlay');
+            }
+
+            function showFloatingNav() {
+                floatingNav?.classList.remove('hidden-by-overlay');
+            }
+
+
+            const btnClose = document.getElementById('btn-menu-close');
+            const menuOverlay = document.getElementById('menu-overlay');
+
+            if (btnClose && menuOverlay) {
+                btnClose.addEventListener('click', () => {
+                    menuOverlay.classList.remove('active');
+                    showFloatingNav();
+                    document.body.style.overflow = '';
+                });
+
+            }
+
+            // --- 1. Filtros ---
+            const btnFilter = document.getElementById('btn-filter');
+            const filterModal = document.getElementById('filter-modal');
+            const closeFilter = document.getElementById('close-filter');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const cards = document.querySelectorAll('.restaurant-card');
+
+            if (btnFilter && filterModal) {
+                btnFilter.addEventListener('click', () => {
+                    filterModal.classList.add('active');
+                    hideFloatingNav();
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeFilter.addEventListener('click', () => {
+                    filterModal.classList.remove('active');
+                    showFloatingNav();
+                    document.body.style.overflow = '';
+                });
+
+
+                filterOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        filterOptions.forEach(opt => opt.classList.remove('active'));
+                        option.classList.add('active');
+                        const filterValue = option.getAttribute('data-filter');
+
+                        cards.forEach(card => {
+                            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                                card.classList.add('fade-in');
+                                setTimeout(() => card.classList.remove('fade-in'), 500);
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                        setTimeout(() => {
+                            filterModal.classList.remove('active');
+                            showFloatingNav();
+                            document.body.style.overflow = '';
+                        }, 300);
+
+                    });
+                });
+
+                filterModal.addEventListener('click', (e) => {
+                    if (e.target === filterModal) {
+                        filterModal.classList.remove('active');
+                        showFloatingNav();
+                        document.body.style.overflow = '';
+                    }
+                });
+
+            }
+
+            // --- 2. Modal Info ---
+            const modal = document.getElementById('info-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalInfo = document.getElementById('modal-info');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalMapBtn = document.getElementById('modal-map-btn');
+            const modalMenuBtn = document.getElementById('modal-menu-btn');
+
+            document.querySelectorAll('.btn-info').forEach(button => {
+                button.addEventListener('click', () => {
+                    const title = button.getAttribute('data-title');
+                    const info = button.getAttribute('data-info');
+                    const link = button.getAttribute('data-link');
+                    const menuLink = button.getAttribute('data-menu-link');
+
+                    modalTitle.textContent = title;
+                    modalInfo.innerHTML = info;
+
+                    modalMapBtn.classList.add('hidden');
+                    modalMenuBtn.classList.add('hidden');
+
+                    if (button.classList.contains('btn-direccion')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        if (link) {
+                            modalMapBtn.href = link;
+                            modalMapBtn.classList.remove('hidden');
+                        }
+                    } else if (button.classList.contains('btn-horario')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                    } else if (button.classList.contains('btn-precio')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        if (menuLink) {
+                            modalMenuBtn.href = menuLink;
+                            modalMenuBtn.classList.remove('hidden');
+                        }
+                    }
+                    modal.classList.add('active');
+                });
+            });
+
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- 3. Scroll del Menú Flotante ---
+            const footer = document.querySelector('footer');
+
+            function handleNavScroll() {
+                if (!footer || !floatingNav) return;
+
+                const scrollBottom = window.scrollY + window.innerHeight;
+                const footerTop = footer.offsetTop;
+                const stopMargin = 30;
+
+                if (scrollBottom > footerTop + stopMargin) {
+                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
+                    floatingNav.classList.add('stopped');
+                    floatingNav.style.position = 'absolute';
+                    floatingNav.style.top = absoluteTop + 'px';
+                    floatingNav.style.bottom = 'auto';
+                } else {
+                    floatingNav.classList.remove('stopped');
+                    floatingNav.style.position = 'fixed';
+                    floatingNav.style.top = 'auto';
+                    floatingNav.style.bottom = '30px';
+                }
+            }
+
+            window.addEventListener('scroll', handleNavScroll);
+            window.addEventListener('resize', handleNavScroll);
+            handleNavScroll();
+        });
+    </script>
+</body>
+
+</html>

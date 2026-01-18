@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa Chila | Compostela</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES Y RESET (Paleta Chila: Surf y Petroglifos) --- */
+        :root {
+            /* Azul Océano Profundo (Mar abierto) */
+            --primary: #1e3a8a;
+            /* Azul Vibrante */
+            --primary-light: #3b82f6;
+            /* Ocre/Bronce (Arena y Rocas Antiguas) */
+            --accent: #d97706;
+            /* Naranja Tostado */
+            --accent-hover: #92400e;
+            /* Texto Azul Marino */
+            --text-dark: #172554;
+            /* Gris Frío */
+            --text-light: #475569;
+            /* Fondo Arena Blanca */
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+
+            /* Gradiente "Deep Blue Surf" */
+            --gradient-sunset: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+
+            /* Fondo Iconos */
+            --icon-bg: #dbeafe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 5%;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--primary);
+            text-shadow: none;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .navbar.scrolled .back-btn {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .navbar.scrolled .back-btn:hover {
+            background: var(--primary-light);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            /* FOTO: Surfista o olas grandes */
+            background: linear-gradient(rgba(30, 58, 138, 0.4), rgba(0, 0, 0, 0.5)), url('https://playascercas.com/wp-content/uploads/2025/04/Playa-boca-de-chila-1000-x-500-px-800-x-500-px-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+            /* Gradiente de texto: Blanco a Bronce */
+            background: -webkit-linear-gradient(#fff, #fdba74);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* --- CONTENEDORES Y SECCIONES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* --- INTRO SECTION --- */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* --- CARDS GENERALES --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+            border-bottom-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: var(--icon-bg);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* --- GALERÍA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding-bottom: 2rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            /* Gradiente Azul Profundo */
+            background: linear-gradient(transparent, rgba(30, 58, 138, 0.85));
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* --- SECCIÓN TIPS --- */
+        .food-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .food-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            background: var(--icon-bg);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* --- INFO PRACTICA --- */
+        .info-section {
+            background: var(--gradient-sunset);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d97706;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* --- FOOTER & CTA --- */
+        .cta-box {
+            background: linear-gradient(135deg, #1e3a8a, #172554);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            margin-top: -50px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-large {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: white;
+            color: var(--primary);
+            font-weight: 800;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: var(--icon-bg);
+        }
+
+        footer {
+            background: #0f172a;
+            /* Azul noche */
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image img {
+                box-shadow: 10px 10px 0 var(--accent);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =====================================================
+   AJUSTE DEFINITIVO DE BACKGROUND PARA MÓVILES
+   (Hero y secciones con background-image)
+   ===================================================== */
+
+        @media (max-width: 768px) {
+
+            /* HERO */
+            .hero {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center top !important;
+                background-repeat: no-repeat;
+                min-height: 100svh;
+                /* Solución correcta para móviles */
+            }
+
+            /* Ajustes visuales del contenido */
+            .hero-content {
+                padding: 0 15px;
+            }
+
+            .hero-logo {
+                max-width: 280px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            /* CUALQUIER SECCIÓN CON BACKGROUND */
+            section[style*="background-image"],
+            .section-bg {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center top !important;
+                background-repeat: no-repeat;
+            }
+        }
+
+        /* Extra ajuste para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+
+            .hero {
+                background-position: center 20% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">Playa Chila</div>
+        <a href="../../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al Mapa
+        </a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Playa Chila</h1>
+            <p>Olas, Aventura y Misticismo Ancestral</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-text" data-aos="fade-right">
+                    <div class="section-title" style="text-align: left; margin-bottom: 2rem;">
+                        <h2>Espíritu Indomable</h2>
+                    </div>
+                    <p>Cerca de la localidad de Zacualpan, Playa Chila se presenta como una joya de mar abierto. Sus 7
+                        kilómetros de arena dorada y su oleaje intenso la convierten en un imán para surfistas
+                        experimentados y amantes de la aventura.</p>
+                    <p>Pero Chila es más que playa; es historia. La zona está impregnada de misticismo gracias a los
+                        antiguos grabados en piedra (petroglifos) que se encuentran en sus alrededores, testigos
+                        silenciosos de las culturas prehispánicas que habitaron Compostela.</p>
+                </div>
+                <div class="intro-image" data-aos="fade-left">
+                    <img src="https://scontent.fgdl2-2.fna.fbcdn.net/v/t39.30808-6/530250348_1545626060095426_8594847842230734181_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xyvkV2C1GXIQ7kNvwFqg7YZ&_nc_oc=AdnnFDhyJHnAVObWLqmAbg7yfvXAIIyxigRffvKKuFyutQVTaQgcF2fPKwzYoifcVsrqPiTxPfRaCdtE6c8hd6Y3&_nc_zt=23&_nc_ht=scontent.fgdl2-2.fna&_nc_gid=QVlSSjt8VLiH4fgYKNmp8g&oh=00_Afqg1S4HNTbj4UsACeMZU4F1HhYDPQcYQJVvR6BeEoe37g&oe=6962F98A"
+                        alt="Surfista en Playa Chila">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contrastes de Chila</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://www.rivieranayarit.com/wp-content/uploads/2017/07/surf-punta-mita.png"
+                        alt="Surf Intenso">
+                    <div class="overlay">Paraíso del Surf</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://www.zonaturistica.com/files/atractivos/1762/A1_1762.jpg" alt="Petroglifos">
+                    <div class="overlay">Petroglifos Antiguos</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://cdn2.opendemocracy.net/media/images/tortuga3.max-1520x1008.jpg"
+                        alt="Campamento Tortuguero">
+                    <div class="overlay">Protección de Tortugas</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://playascercas.com/wp-content/uploads/2025/04/2-683x1024.jpg"
+                        alt="Atardecer Dorado">
+                    <div class="overlay">Atardeceres Salvajes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Aventura Local</h2>
+                <p>Donde la adrenalina se encuentra con la cultura</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-water"></i></div>
+                    <h3>Surf de Nivel</h3>
+                    <p>Las olas aquí son constantes y potentes. Es el spot preferido para surfistas que buscan escapar
+                        de las multitudes de otras playas.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-icons"></i></div>
+                    <h3>Ruta de Petroglifos</h3>
+                    <p>Explora los alrededores para descubrir rocas grabadas con espirales y símbolos antiguos, un
+                        tesoro arqueológico al aire libre.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-paw"></i></div>
+                    <h3>Campamento Tortuguero</h3>
+                    <p>Chila es un sitio clave de anidación. Visita el campamento local para aprender sobre la
+                        conservación de estas especies.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-fish"></i></div>
+                    <h3>Pesca de Orilla</h3>
+                    <p>Gracias a su profundidad cercana a la orilla, es un lugar excelente para la pesca deportiva y
+                        recreativa.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon"><i class="fas fa-campground"></i></div>
+                    <h3>Camping Rústico</h3>
+                    <p>Vive la experiencia completa acampando bajo las estrellas, arrullado por el fuerte sonido del
+                        oleaje del Pacífico.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Fotografía</h3>
+                    <p>Los paisajes vírgenes y las formaciones rocosas ofrecen escenarios dramáticos perfectos para
+                        fotógrafos de naturaleza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Guía del Viajero</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div data-aos="fade-right">
+                    <p style="margin-bottom: 20px;">Playa Chila es hermosa pero salvaje. Ten en cuenta:</p>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div><strong>Mar Abierto</strong><br><small>El oleaje es fuerte y hay corrientes de retorno.
+                                Solo nadadores expertos o surfistas deben ingresar.</small></div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-store-slash"></i></div>
+                        <div><strong>Servicios Limitados</strong><br><small>Es una playa semi-virgen. Encontrarás pocas
+                                palapas; lleva tu sombrilla y comida.</small>
+                        </div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-icon"><i class="fas fa-route"></i></div>
+                        <div><strong>Acceso</strong><br><small>Se llega a través de caminos rurales desde Zacualpan. Un
+                                vehículo alto es recomendable en época de lluvias.</small>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: relative;" data-aos="fade-left">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t1.6435-9/104419206_3260968707256854_1790857267203687536_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=BlgKl93hW6oQ7kNvwGulOBK&_nc_oc=Adm7rgO8ssesc6FJCdgrxao3QeA3bPKG8x0ysS1Y1QmQawzCRkZTaWLfZvyVZvQAUxMrssls9Hb8ad6HMJ5yDw5S&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=EdJ96sFCiJpB9rXQ2f48Vw&oh=00_AfqmMED-VPDcYJD_iY64BP3UAZz3aCR8jbc2Bw-j8xFl_Q&oe=698492F5"
+                        style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);"
+                        alt="Camino a la playa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-map-pin"></i>
+                    <h4>Ubicación</h4>
+                    <p>Cerca de Zacualpan</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-water"></i>
+                    <h4>Mar</h4>
+                    <p>Abierto / Oleaje Alto</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-history"></i>
+                    <h4>Cultura</h4>
+                    <p>Zona de Petroglifos</p>
+                </div>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-users"></i>
+                    <h4>Ideal Para</h4>
+                    <p>Surfistas y Aventureros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="cta-box" data-aos="zoom-in">
+                <h2>Siente la Fuerza del Pacífico</h2>
+                <p>Descubre el lado salvaje y cultural de la Riviera Nayarit.</p>
+                <a href="https://www.google.com/maps/place/Playa+Chila/@21.2346663,-105.2398881,14z/data=!3m1!4b1!4m6!3m5!1s0x8420d762dadbe237:0x7df78c8161d07dd!8m2!3d21.2536095!4d-105.2207606!16s%2Fg%2F11c5q44nss?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
+                    class="btn-large" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Ver en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Playa Chila</h3>
+                    <p style="opacity: 0.7;">Municipio de Compostela, Nayarit.</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; opacity: 0.5; font-size: 0.8rem;">
+                &copy; 2026 Turismo Compostela.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // Efecto Sticky Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

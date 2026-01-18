@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andador Cafetero | Compostela Pueblo Mágico</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/styles.css">
+
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --primary: #7f1d1d;
+            --color-terracota: #D4704C;
+            --color-turquesa: #00A8CC;
+            --color-dark: #221e1f;
+            --color-text: #333;
+            --font-main: 'Montserrat', sans-serif;
+            --accent: #d97706;
+            --terracotta: #c2410c;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar-compostela {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, white);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* COMPOSTELA */
+        .brand-main {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #e5e5e5);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* cerca de ti */
+        .brand-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #d8d8d8;
+            margin-left: 6px;
+        }
+
+
+        /* Ajuste Responsive para móviles */
+        @media (max-width: 768px) {
+            .logo-text {
+                flex-direction: column;
+                /* En móvil uno debajo del otro */
+                align-items: center;
+                gap: 0;
+            }
+
+            .brand-main {
+                font-size: 1.4rem;
+            }
+
+            .brand-slogan {
+                font-size: 1.1rem;
+                margin-top: -5px;
+            }
+        }
+
+        .btn-volver {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-cafetero {
+            height: 40vh;
+            background-image: url('https://paleobull.com/cdn/shop/articles/cacao.jpg?v=1580143397');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0.5rem 0 0 0;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- GRID --- */
+        .container-cafetero {
+            max-width: 1200px;
+            margin: 3rem auto 8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .cafes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* --- CARDS --- */
+        .cafe-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: opacity 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+            opacity: 1;
+        }
+
+        .cafe-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cafe-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .cafe-title {
+            font-size: 1.15rem;
+            color: #222;
+            margin: 0 0 0.8rem 0;
+            font-weight: 700;
+        }
+
+        .cafe-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .btn-info {
+            flex: 1;
+            min-width: calc(50% - 0.4rem);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .card-footer.has-precio .btn-precio {
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        .btn-direccion {
+            background-color: #ecfeff;
+            color: var(--primary-dark);
+            border: 1px solid #cffafe;
+        }
+
+        .btn-horario {
+            background-color: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+        }
+
+        .btn-precio {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .btn-direccion:hover {
+            background-color: #cffafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-horario:hover {
+            background-color: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        .btn-precio:hover {
+            background-color: #fde68a;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL DE INFORMACIÓN --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-icon-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #modal-title {
+            color: #222;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        #modal-info {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--color-turquesa);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 168, 204, 0.3);
+        }
+
+        .btn-maps:hover {
+            background-color: #008ba8;
+            transform: translateY(-2px);
+        }
+
+        .btn-maps.hidden {
+            display: none;
+        }
+
+        /* ========================================
+           MENÚ FLOTANTE ESTILO GASTRONOMÍA
+           ======================================== */
+
+        .floating-nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 9999;
+            pointer-events: none;
+            transition: top 0.1s, bottom 0.1s;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-nav-container.hidden-by-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+
+        .floating-nav {
+            pointer-events: auto;
+            background-color: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 25px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-pill-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #b0b0b0;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-pill-btn:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .pill-icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        .pill-text {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .main-btn {
+            position: relative;
+            top: -15px;
+        }
+
+        .pill-icon-main {
+            background: linear-gradient(135deg, var(--accent), var(--terracotta));
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+            border: 4px solid #141414;
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover .pill-icon-main {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.6);
+        }
+
+        .pill-text-main {
+            margin-top: 5px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .floating-nav-container.stopped {
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+
+        /* ========================================
+           OVERLAY DE MENÚ (IGUAL A GASTRONOMÍA)
+           ======================================== */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-content {
+            background: transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            /* Ocultar scrollbar pero mantener funcionalidad */
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        .menu-overlay.active .menu-content {
+            transform: scale(1);
+        }
+
+        .menu-header {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: none;
+        }
+
+        .menu-title-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        .menu-close:active {
+            transform: rotate(90deg) scale(0.9);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            background: transparent;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            /* Mejoras para táctil */
+            min-height: 60px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-item:active {
+            transform: translateX(5px) scale(0.98);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .menu-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary, #FF8C42);
+            transition: all 0.3s;
+            flex-shrink: 0;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .menu-item:hover .menu-item-icon {
+            transform: scale(1.2);
+        }
+
+        .menu-item:active .menu-item-icon {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar personalizada */
+        .menu-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .menu-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .menu-title-text {
+                font-size: 1.5rem;
+            }
+
+            .menu-item {
+                font-size: 1rem;
+                padding: 1.3rem 1.2rem;
+                min-height: 65px;
+                gap: 12px;
+            }
+
+            .menu-item-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 1.4rem 1rem;
+                min-height: 70px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .cafes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cafes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cafetero {
+                height: 35vh;
+            }
+
+            .navbar-compostela {
+                padding: 1rem;
+            }
+
+            .floating-nav {
+                padding: 5px 15px;
+                gap: 15px;
+            }
+
+            .pill-icon-main {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .main-btn {
+                top: -10px;
+            }
+        }
+
+        .menu-overlay.active~.floating-nav-container {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar-compostela">
+        <div class="logo-container">
+            <h1 class="logo-text">
+                <span class="brand-main">COMPOSTELA</span>
+                <span class="brand-slogan">cerca de ti</span>
+            </h1>
+        </div>
+        <a href="compostela.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </nav>
+
+    <header class="hero-cafetero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Andador Cafetero</h2>
+                <p class="banner-subtitle">
+                    Saborea el delicioso café producido en nuestro Pueblo Mágico.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-cafetero">
+        <div class="cafes-grid">
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/584308568_838259062468951_3507709112468467073_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=BgkBB-LG72EQ7kNvwHpgcQr&_nc_oc=AdkMqJtJIQzTkpahWZVT0b00eZpgF6q1l-zgx7yXu92T-eYOoaRVa8qoQtmI5MWXEhyH8LFZ-IAKhQZhh4bmc_UF&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=NZJG8nHRTGulzhLK3Pgq7A&oh=00_Afq9AtFAbnkGpV4or8XqdH8PmlTbyIrRAe8eZ1NJlzEzZQ&oe=696F50F5"
+                        alt="Cafe Casa Luna">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Cafe Casa Luna</h3>
+                    <p class="cafe-description">Cafetería tradicional con buena valoración local y ambiente relajado;
+                        ideal para café y plática con amigos o familiares.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Cafe Casa Luna"
+                            data-info="Esquina con, I. Allende, Morelos 1 Sur, 63700 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Cafe+Casa+Luna/@21.2370119,-104.904178,17z/data=!3m1!4b1!4m6!3m5!1s0x84272960c153ab5d:0x6486a6e08374a989!8m2!3d21.2370119!4d-104.9016031!16s%2Fg%2F11sdnylq78?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Sábado<br>7:00 am a 9:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Precio promedio: $100 - $200 MXN por persona">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/480560700_122202759302235074_857608274920316777_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=nB4Fhnt_HioQ7kNvwGb818O&_nc_oc=AdmGOYBVCIbsBXAtBYS-cqwY-Ywyq_TKKwL2C7wfOr66sxoxCYieg5lIMcrimJrTbMwZ9DB77KE1GcPNBNF2cEOP&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=kpfuMLdYYpCIRYlIfizUvA&oh=00_Afqk_JaU8xeiGw-OVCAUCOGc6Kf-G1DMxWF1qLk6tL4dfw&oe=696F53C7"
+                        alt="Bakano Café Colombiano">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Bakano Café Colombiano</h3>
+                    <p class="cafe-description">Café estilo colombiano con excelente calificación, ambiente acogedor y
+                        buen café preparado.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Bakano Café Colombiano"
+                            data-info="Hidalgo 62, Barrio de Chila, 63704 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Bakano+Caf%C3%A9+Colombiano/@21.2360194,-104.9027934,17.5z/data=!4m6!3m5!1s0x8427290063e88159:0xf97c00f7bfebd22a!8m2!3d21.2361091!4d-104.9008456!16s%2Fg%2F11y76d673b?entry=ttu&g_ep=EgoyMDI2MDEwNi4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a domingo<br>8:00 am a 9:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Precio promedio: $100 - $200 MXN por persona">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t1.6435-9/115795903_323509305705338_7311005462100614836_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0b6b33&_nc_ohc=Z0LA-qYGiyAQ7kNvwEJoiYH&_nc_oc=AdkDYjOVVD9SyMeG_zUw9ydRrobUAiwBKQtAVYKWXkXkKfGiP3Py2tDWHpnGvP7f4jPf-2kHqDOHHMTwehktHB7m&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=PL90R1BdcWeZkbLKTuQjmg&oh=00_Afok5FCUpDzTEO0L6usCNWCUBNG5hnfg7ikxYKEmfAX2aw&oe=69910FA9"
+                        alt="Café Molote">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Café Molote</h3>
+                    <p class="cafe-description">Pequeña cafetería estilo espresso bar con bebidas bien valoradas por
+                        locales.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Café Molote"
+                            data-info="Mina 21, Andador Chapultepec, España 8, 63705 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Caf%C3%A9+Molote/@21.2374324,-104.9016767,18z/data=!3m1!4b1!4m6!3m5!1s0x8427293f3391207b:0xa8dd31c6eba21009!8m2!3d21.2374324!4d-104.9003892!16s%2Fg%2F11fl0qk2sn?entry=ttu&g_ep=EgoyMDI2MDEwNi4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Domingo<br>8:00 am a 10:30 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Precio promedio: $100 - $200 MXN por persona">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/535512533_1603056934445704_5540121825891757060_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ovcq2D9b130Q7kNvwFTrEix&_nc_oc=AdnL_W4JY6eSSzG1LAuBesRTz-MVxx3g5ik2iuZ3CyDh36ZgSSNL5Hdlft3wouYk1q9bFiopbsD8cqwNz33EoyC8&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=eOmm2b-AvzrZlgHHvisZqA&oh=00_AfrmuRCgByuwaQjjWEN_jHVBWBEu2gu5hjGhNl3wyNMPtQ&oe=696F772F"
+                        alt="Café Galicia">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Café Galicia</h3>
+                    <p class="cafe-description">Café tradicional con excelente valoración; perfecto para disfrutar una
+                        taza en el centro del municipio.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Café Galicia"
+                            data-info="Benito Juárez 19-B, Barrio de Chila, 63700 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Caf%C3%A9+Galicia/@21.2362257,-104.902282,18z/data=!3m1!4b1!4m6!3m5!1s0x842729077e046a8b:0x1953ec19dc7e5968!8m2!3d21.2362257!4d-104.9009945!16s%2Fg%2F11c6tgzl32?entry=ttu&g_ep=EgoyMDI2MDEwNi4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Lunes a Sábado<br>7:00 am a 9:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Precio promedio: $100 - $200 MXN por persona">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t51.82787-15/519490817_17908104447190058_4274766971859181599_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cVRAGOZNskgQ7kNvwGIO1Ek&_nc_oc=AdkpTdW42WrRZiA4NwKhDTAb3NOYqEuqNZ36PVoHdwYNX29iCd1B36Pq3Kh27Pk_T-LPF_5f7M7_ftpG_yqrTupn&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=2AZ5cHVRtXUXrq_qQSAQmQ&oh=00_AfqcegUMUHVwnKybgwABTM9D81PxgX6SEZqFylAy7_gJ-g&oe=696F8091"
+                        alt="Tuuturi café & cocina">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Tuuturi café & cocina</h3>
+                    <p class="cafe-description">Espresso bar que también ofrece opciones de cocina ligera. Muy bien
+                        valorado por la calidad de sus bebidas y ambiente.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Tuuturi café & cocina"
+                            data-info="Zaragoza 26-sur, Centro, 63700 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Tuuturi+caf%C3%A9+%26+cocina/@21.2367632,-104.9023858,17z/data=!3m1!4b1!4m6!3m5!1s0x8427296a2f22a6db:0xb47784948a547c9e!8m2!3d21.2367632!4d-104.8998109!16s%2Fg%2F11vz5b6nb0?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Jueves a Lunes - 5:30 pm a 9:45 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 - $300 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/516525604_1291616146307395_7743937549931696035_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=i2wic3jPMxYQ7kNvwHnKSfY&_nc_oc=AdlSlg17EiLy-mHaE6OO1-Jo_wmesmEKWnT5o2XYfD16vH4HSKZe6zZM9P4-xalEPvH9ApB7LPm0F-Yma9PaLsBY&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=ktgCQijFtn9AGtePwfVIJA&oh=00_AfqmINgjy-tOEcBBHWgDqcMpU2C9PMZDW5u0c9sj1wXweg&oe=696F6DF0"
+                        alt="Citomayo Café">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Citomayo Café</h3>
+                    <p class="cafe-description">Café acogedor a la orilla de la carretera federal; buen lugar para hacer
+                        una pausa con café y pan artesanal.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Citomayo Café"
+                            data-info="Nicolás Bravo Pte. 99, Santa Ana, 63704 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Citomayo+Caf%C3%A9/@21.2376089,-104.9080489,16.25z/data=!4m10!1m2!2m1!1sCitomayo+Caf%C3%A9!3m6!1s0x8427297f45e6cbb5:0x8d43103b63914252!8m2!3d21.2378024!4d-104.9023177!15sCg5DaXRvbWF5byBDYWbDqVoQIg5jaXRvbWF5byBjYWbDqZIBC2NvZmZlZV9zaG9w4AEA!16s%2Fg%2F11qpjd0f_4?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Todos los Días - 6:00 pm a 10:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 - $200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/471417775_1035748908356340_8708475025414156891_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=n46kqjtOu_EQ7kNvwECSkwa&_nc_oc=AdkwxX3D8L-1rJk3OldAkxzLSrV8ylQKCrgIHAMhREMlBSSSWqg8bF8vTWOvEXt0B_c0oW3pPACWLJc2EjQTUuv_&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=EVWGeZ67nL-Tg_uh7ZZKWw&oh=00_AfrMoKJIpq6H8Xi3x2wvYUXKqV_D5w8CeuzO2B_ThX_oKw&oe=696F5E6E"
+                        alt="Café 692">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Café 692</h3>
+                    <p class="cafe-description">Espresso bar popular entre locales por la calidad del café y sus bebidas
+                        especializadas.
+                        Dirección: Rosales 50, Guayabal, 63700 Compostela, Nay., México.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Café 692"
+                            data-info="Rosales 50, Guayabal, 63700 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Citomayo+Caf%C3%A9/@21.2376089,-104.9080489,16.25z/data=!4m10!1m2!2m1!1sCitomayo+Caf%C3%A9!3m6!1s0x8427297f45e6cbb5:0x8d43103b63914252!8m2!3d21.2378024!4d-104.9023177!15sCg5DaXRvbWF5byBDYWbDqVoQIg5jaXRvbWF5byBjYWbDqZIBC2NvZmZlZV9zaG9w4AEA!16s%2Fg%2F11qpjd0f_4?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Viernes a Miercoles - 4:30 pm a 10:15 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 - $200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t51.82787-15/588479980_18032879459781470_6554741029886245789_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rVy9GbmJPbYQ7kNvwE14jLm&_nc_oc=Adl85Z7PQ7QDSKKDF9i7gBnerQeuHznlYIu9ix5MHMo8Cu0RM-oppSqxJbSDWs4NnBiiRO6sQcYxGIUmNlS32upK&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=QUj6Ocd-JUTq6rzU9cSMoA&oh=00_AfrfY2s6i7Hp9Kl6ltLA3MHWlZB-3YiqzPkGS1v2fURSjg&oe=696F85B3"
+                        alt="Café Gradilla">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Café Gradilla</h3>
+                    <p class="cafe-description">Café-restaurante con enfoque tradicional y menú variado donde también se
+                        disfruta buen café.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Café Gradilla"
+                            data-info="Zaragoza Sur 27, Guayabal, 63700 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Caf%C3%A9+Gradilla/@21.2368434,-104.9023901,17z/data=!3m1!4b1!4m6!3m5!1s0x842729071a069063:0x822632d3f6875bed!8m2!3d21.2368434!4d-104.8998152!16s%2Fg%2F11c6qm9wr9?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miercoles a Lunes - 5:30 pm a 11:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 - $200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cafe-card">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/504064080_9852900728130247_8044951205478002799_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=qyHZ-1QcfA4Q7kNvwEEFH4q&_nc_oc=AdnJOBL3Lb0dTWPL8BALKkIVRnahy1BH8n5qeuFzJFbwQ1YLLlvxY6HR329yMvVtDjfASruf9_YBOhKhDk_T7lWn&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=4ByDg2cpslUTGCnZYhCPrA&oh=00_Afpi_56Y-_VUSYez5BsHaE5kq-M7z3E3FsAc1OL9fLmKKQ&oe=696F583E"
+                        alt="Café Cerro Azul">
+                </div>
+                <div class="card-content">
+                    <h3 class="cafe-title">Café Cerro Azul</h3>
+                    <p class="cafe-description">Pequeño café con gente local destacando su sabor y ambiente tranquilo.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Café Cerro Azul"
+                            data-info="Jiménez 224, Norte, 63705 Compostela, Nay."
+                            data-link="https://www.google.com.mx/maps/place/Caf%C3%A9+Cerro+Azul/@21.2411097,-104.9046797,17z/data=!3m1!4b1!4m6!3m5!1s0x8427299f2aaf5789:0x9cebaed01df1ffb1!8m2!3d21.2411097!4d-104.9021048!16s%2Fg%2F11j0h7gd9v?entry=ttu&g_ep=EgoyMDI2MDExMS4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="Miercoles a Lunes - 5:30 pm a 11:00 pm">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Consumo promedio: $100 - $200 MXN p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- MODAL DE INFORMACIÓN -->
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-icon-header">
+                <i class="fas fa-info-circle" id="modal-icon"></i>
+            </div>
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-info">Información detallada...</p>
+
+            <a href="#" target="_blank" id="modal-map-btn" class="btn-maps hidden">
+                <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- MENÚ FLOTANTE -->
+    <div class="floating-nav-container">
+        <div class="floating-nav">
+            <a href="../../index.html" class="nav-pill-btn">
+                <div class="pill-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span class="pill-text">INICIO</span>
+            </a>
+
+            <button id="btn-menu-toggle" class="nav-pill-btn main-btn">
+                <div class="pill-icon-main">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+
+            <a href="../eventos.html" class="nav-pill-btn">
+                <div class="pill-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <span class="pill-text">EVENTOS</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- OVERLAY DE MENÚ (IGUAL A GASTRONOMÍA) -->
+    <!-- MENÚ OVERLAY (ESTILO GASTRONOMÍA - CENTRADO CON ICONOS NARANJAS) -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="btn-menu-close" class="menu-close">×</button>
+            <div class="menu-header">
+                <h2 class="menu-title-text">Explora Compostela</h2>
+            </div>
+            <nav class="menu-list">
+                <a href="atractivos-turisticos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-landmark"></i>
+                    </span>
+                    Atractivos Turísticos
+                </a>
+                <a href="hospedajes-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-hotel"></i>
+                    </span>
+                    Hospedaje
+                </a>
+                <a href="gastronomia-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                    Gastronomía
+                </a>
+                <a href="andador-cafetero.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-coffee"></i>
+                    </span>
+                    Andador Cafetero
+                </a>
+                <a href="destinos-cercanos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </span>
+                    Destinos Cercanos
+                </a>
+                <a href="operadores-turisticos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </span>
+                    Operadores Turísticos
+                </a>
+                <a href="eventos-temporada-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </span>
+                    Eventos de Temporada
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 H. Ayuntamiento de Compostela. Turismo.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- 1. MODAL DE INFORMACIÓN ---
+            const modal = document.getElementById('info-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalInfo = document.getElementById('modal-info');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalMapBtn = document.getElementById('modal-map-btn');
+
+            document.querySelectorAll('.btn-info').forEach(button => {
+                button.addEventListener('click', () => {
+                    const title = button.getAttribute('data-title');
+                    const info = button.getAttribute('data-info');
+                    const link = button.getAttribute('data-link');
+
+                    modalTitle.textContent = title;
+                    modalInfo.innerHTML = info;
+
+                    if (button.classList.contains('btn-direccion')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        if (link) {
+                            modalMapBtn.href = link;
+                            modalMapBtn.classList.remove('hidden');
+                        } else {
+                            modalMapBtn.classList.add('hidden');
+                        }
+                    } else if (button.classList.contains('btn-horario')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        modalMapBtn.classList.add('hidden');
+                    } else if (button.classList.contains('btn-precio')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        modalMapBtn.classList.add('hidden');
+                    }
+
+                    modal.classList.add('active');
+                });
+            });
+
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- 4. MENÚ FLOTANTE ---
+            const btnMenu = document.getElementById('btn-menu-toggle');
+            const btnClose = document.getElementById('btn-menu-close');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            if (btnMenu && menuOverlay) {
+                btnMenu.addEventListener('click', () => {
+                    menuOverlay.classList.add('active');
+                    floatingNav.classList.add('hidden-by-overlay');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (btnClose && menuOverlay) {
+                btnClose.addEventListener('click', () => {
+                    menuOverlay.classList.remove('active');
+                    floatingNav.classList.remove('hidden-by-overlay');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // --- 3. DETENER MENÚ FLOTANTE EN FOOTER ---
+            const footer = document.querySelector('footer');
+
+            function handleNavScroll() {
+                if (!footer || !floatingNav) return;
+
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const scrollBottom = scrollY + windowHeight;
+                const footerTop = footer.offsetTop;
+                const stopMargin = 30;
+
+                if (scrollBottom > footerTop + stopMargin) {
+                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
+                    floatingNav.classList.add('stopped');
+                    floatingNav.style.position = 'absolute';
+                    floatingNav.style.top = `${absoluteTop}px`;
+                    floatingNav.style.bottom = 'auto';
+                } else {
+                    floatingNav.classList.remove('stopped');
+                    floatingNav.style.position = 'fixed';
+                    floatingNav.style.top = 'auto';
+                    floatingNav.style.bottom = '30px';
+                }
+            }
+
+            window.addEventListener('scroll', handleNavScroll);
+            window.addEventListener('resize', handleNavScroll);
+            handleNavScroll();
+
+        });
+    </script>
+</body>
+
+</html>

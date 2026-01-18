@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compostela | Descubre el Paraíso</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="top-anchor"></div>
+
+    <nav class="navbar">
+        <div class="logo"></div>
+        <div class="nav-links">
+            <a href="#mapa-section" class="btn-nav">Ir al Mapa</a>
+        </div>
+    </nav>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav">
+            <button class="nav-pill-btn" id="btn-home">
+                <div class="pill-icon"><i class="fas fa-home"></i></div>
+                <span class="pill-text">INICIO</span>
+            </button>
+
+            <button class="nav-pill-btn main-btn" id="btn-menu-toggle">
+                <div class="pill-icon-main"><i class="fas fa-bars"></i></div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+
+            <button class="nav-pill-btn" id="btn-events">
+                <div class="pill-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="pill-text">EVENTOS</span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <button class="close-menu-btn" id="btn-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="menu-content-box">
+            <img src="images/title-compostela.png" alt="Compostela Logo" class="menu-overlay-logo">
+
+            <nav class="overlay-nav">
+                <a href="locations/Compostela/compostela.html" class="overlay-link">
+                    <i class="fas fa-landmark"></i> Compostela Pueblo Mágico
+                </a>
+                <a href="#mapa-section" class="overlay-link">
+                    <i class="fas fa-map-marked-alt"></i> Mapa Interactivo
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-slider">
+            <div class="hero-slide active"
+                style="background-image: url('https://visitnayarit.travel/wp-content/uploads/2023/07/Compostela-Portada-1.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://www.lugaresturisticosenmexico.com/wp-content/uploads/2022/05/Playa-Rincon-de-Guayabitos-Riviera-Nayarit.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://l.icdbcdn.com/oh/441ab8b7-2def-478e-911a-686dfb8f82c8.jpg?f=32');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://gentenayarit.com/wp-content/uploads/2019/02/jpg_Las_Tortugas_7.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://visitmexico.com/media/usercontent/680aefbe03165-DJI_0064_gmxdot_jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://www.gob.mx/cms/uploads/article/main_image/85209/Plaza-principal-Compostela-de-Indias-Nayarit-web.jpg.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://gentenayarit.com/wp-content/uploads/2020/02/Chacala-C%C3%B3mo-si-Estuvieras-en-Casa-2.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://visitnayarit.travel/wp-content/uploads/2024/04/DJI_0469.webp');">
+            </div>
+        </div>
+
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+            <img src="images/title-compostela.png" alt="Bienvenidos a Compostela" class="hero-logo-title">
+            <a href="#intro" class="scroll-down">
+            </a>
+        </div>
+
+        <div class="hero-wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                    opacity=".25" class="shape-fill-water"></path>
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill-white"></path>
+            </svg>
+        </div>
+    </header>
+
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-text" data-aos="fade-right">
+                    <h2>Donde la Sierra toca el Mar</h2>
+                    <p>Explora nuestra región a través del mapa interactivo. Desde el histórico Compostela hasta las
+                        cálidas aguas de nuestras playas.</p>
+
+                    <div class="stats-row" id="counter-section">
+                        <div class="stat-item">
+                            <span class="count" data-target="11">0</span>
+                            <label>Destinos Principales</label>
+                        </div>
+                        <div class="stat-item">
+                            <span class="count" data-target="1">0</span>
+                            <label>Pueblo Mágico</label>
+                        </div>
+                        <div class="stat-item">
+                            <span class="count" data-target="28">0</span>
+                            <label>°C Promedio</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Paisaje Nayarit">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mapa-section" class="map-section">
+        <div class="container-fluid">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Explora la Región</h2>
+                <p>Selecciona un destino de la lista o haz clic directamente en los pines del mapa.</p>
+            </div>
+
+            <div class="map-interface">
+                <aside class="map-sidebar" data-aos="fade-right">
+                    <h3>Destinos Destacados</h3>
+                    <ul class="destinations-list" id="sidebarList">
+                    </ul>
+                </aside>
+
+                <div class="map-wrapper-modern" data-aos="zoom-in">
+                    <div class="map-container" id="mapContainer">
+                        <img src="images/mapa-compostela.png" alt="Mapa de Compostela" id="mapImage"
+                            class="map-image-base">
+                        <div id="pinsContainer" class="pins-layer"></div>
+                    </div>
+
+                    <div class="map-legend-overlay">
+                        <span><i class="fas fa-mouse-pointer"></i> Interactúa con los pines rojos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer">
+        <div class="container">
+            <p>&copy; 2026 H. Ayuntamiento de Compostela. Turismo.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/map.js"></script>
+</body>
+
+</html>

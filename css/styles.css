@@ -1,0 +1,777 @@
+/* ========================================
+   1. VARIABLES & RESET (BASE)
+   ======================================== */
+:root {
+    --primary: #0e7490;
+    --primary-dark: #164e63;
+    --accent: #d97706;
+    --terracotta: #c2410c;
+    --red-pin: #ef4444;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f0fdfa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+/* ========================================
+   2. HEADER & HERO
+   ======================================== */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-nav {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    background: white;
+    color: var(--primary-dark);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 120vh;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    padding: 0 20px;
+    padding-top: 100px;
+    /* Ajusta este valor para subir o bajar más el logo */
+    z-index: 2;
+    /* Asegura que el texto quede sobre el fondo */
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1.5s ease-in-out, transform 30s linear;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1.15);
+    transition: opacity 1.5s ease-in-out, transform 6s linear;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(14, 116, 144, 0.3), rgba(15, 23, 42, 0.6));
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.hero .highlight {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.hero .description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-logo-title {
+    display: block;
+    margin: 0 auto 1.5rem;
+    max-width: 90%;
+    width: 700px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 768px) {
+    .hero-logo-title {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* --- DIVISOR DE OLAS --- */
+.hero-wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+}
+
+.hero-wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 120px;
+}
+
+.shape-fill-white {
+    fill: #FFFFFF;
+    opacity: 1;
+    fill-opacity: 1;
+}
+
+.shape-fill-water {
+    fill: #062fd4;
+    animation: waveMove 2s ease-in-out infinite alternate;
+    opacity: 1;
+    fill-opacity: 1;
+}
+
+@keyframes waveMove {
+    from {
+        transform: translateX(10);
+    }
+
+    to {
+        transform: translateX(-60px);
+    }
+}
+
+.hero-wave-divider svg:not(.palm-decor) {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   3. SECCIÓN INTRO & STATS
+   ======================================== */
+.intro-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.stats-row {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat-item .count {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--terracotta);
+}
+
+.stat-item label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+.intro-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: -15px 15px 0 var(--primary);
+}
+
+/* ========================================
+   4. SECCIÓN MAPA
+   ======================================== */
+.map-section {
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, #fff, #ecfeff);
+}
+
+.container-fluid {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.map-interface {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* Sidebar Lista */
+.map-sidebar {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.map-sidebar h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.destinations-list {
+    list-style: none;
+}
+
+.dest-item {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dest-item:hover,
+.dest-item.active {
+    background-color: #f0f9ff;
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.dest-item span {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.dest-item i {
+    color: var(--terracotta);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.dest-item:hover i,
+.dest-item.active i {
+    opacity: 1;
+}
+
+/* Map Wrappers */
+.map-wrapper-modern {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    line-height: 0;
+}
+
+.map-image-base {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ========================================
+   5. PINES Y TOOLTIPS
+   ======================================== */
+
+/* =====================================================
+   AJUSTES DE PINES Y TOOLTIPS PARA MÓVILES
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    /* PIN BASE */
+    .location-pin {
+        width: 16px;
+        /* Antes 40px */
+        height: 16px;
+        transform: translate(-50%, -95%);
+        transition: transform 0.25s ease, filter 0.25s ease;
+        z-index: 15;
+    }
+
+    /* HOVER / ACTIVE MÁS SUTIL */
+    .location-pin:hover,
+    .location-pin.active {
+        transform: translate(-50%, -98%) scale(1.03);
+        /* Antes 1.3 */
+        filter: drop-shadow(0 3px 6px rgba(239, 68, 68, 0.45));
+        z-index: 25;
+    }
+
+    /* TOOLTIP */
+    .pin-tooltip {
+        font-size: 8px !important;
+        padding: 3px 6px !important;
+        max-width: 110px !important;
+        border-radius: 5px;
+    }
+
+    /* Evita que el tooltip quede tapado */
+    .location-pin:hover .pin-tooltip,
+    .location-pin.active .pin-tooltip {
+        transform: translateX(-50%) translateY(-4px);
+        opacity: 1;
+    }
+
+    /* Pines importantes (animación más discreta) */
+    .location-pin.important {
+        animation: bounce-mobile 2.6s ease-in-out infinite;
+    }
+}
+
+
+/* Animación optimizada para móviles */
+@keyframes bounce-mobile {
+
+    0%,
+    100% {
+        transform: translate(-50%, -95%);
+    }
+
+    50% {
+        transform: translate(-50%, -105%);
+    }
+}
+
+/* Ajuste extra para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .location-pin {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .pin-tooltip {
+        font-size: 7.5px !important;
+    }
+}
+
+
+.pins-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.location-pin {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    pointer-events: auto;
+    transform: translate(-50%, -100%);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    z-index: 20;
+}
+
+.pin-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.location-pin:hover,
+.location-pin.active {
+    transform: translate(-50%, -120%) scale(1.3);
+    filter: drop-shadow(0 10px 15px rgba(239, 68, 68, 0.6));
+    z-index: 30;
+}
+
+/*.pin-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+}
+
+.pin-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #dc2626;
+}*/
+
+.location-pin:hover .pin-tooltip,
+.location-pin.active .pin-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.location-pin.important {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, -100%) translateY(0);
+    }
+
+    50% {
+        transform: translate(-50%, -100%) translateY(-10px);
+    }
+}
+
+/* ========================================
+   6. FOOTER
+   ======================================== */
+footer {
+    background: #0f172a;
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* ========================================
+   7. NUEVO: MENÚ FLOTANTE (PILL NAV)
+   ======================================== */
+
+.floating-nav-container {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+    /* Permite clicks en el contenido de fondo */
+    transition: top 0.1s, bottom 0.1s;
+}
+
+/* La pastilla negra */
+.floating-nav {
+    pointer-events: auto;
+    /* Habilita clicks en el menú */
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 5px 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Botones laterales */
+.nav-pill-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #b0b0b0;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-pill-btn:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.pill-icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.pill-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Botón Central (MENÚ) */
+.main-btn {
+    position: relative;
+    top: -15px;
+}
+
+.pill-icon-main {
+    background: linear-gradient(135deg, var(--accent), var(--terracotta));
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+    border: 4px solid #141414;
+    /* Mismo color que el fondo del nav */
+    transition: all 0.3s ease;
+}
+
+.main-btn:hover .pill-icon-main {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.6);
+}
+
+.pill-text-main {
+    margin-top: 5px;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Clase para detener el menú antes del footer */
+.floating-nav-container.stopped {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+/* ========================================
+   8. NUEVO: OVERLAY DE PANTALLA COMPLETA
+   ======================================== */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.98);
+    /* Color oscuro base */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.close-menu-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close-menu-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    color: var(--accent);
+}
+
+.menu-content-box {
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.menu-overlay-logo {
+    max-width: 250px;
+    margin-bottom: 40px;
+}
+
+.overlay-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.overlay-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.overlay-link i {
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+    color: var(--accent);
+}
+
+.overlay-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(10px);
+    color: var(--accent);
+}
+
+/* Media Queries Finales */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .map-interface {
+        grid-template-columns: 1fr;
+    }
+
+    .map-sidebar {
+        max-height: 250px;
+        margin-bottom: 2rem;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-image {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-wave-divider svg {
+        height: 80px;
+    }
+
+    .floating-nav {
+        padding: 5px 15px;
+        gap: 15px;
+        bottom: 20px;
+    }
+
+    .pill-icon-main {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .main-btn {
+        top: -10px;
+    }
+}

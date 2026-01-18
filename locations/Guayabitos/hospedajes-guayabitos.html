@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedaje | La Peñita de Jaltemba</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES TEMA LA PEÑITA (Terracota/Dorado) --- */
+        :root {
+            --primary: #0891b2;
+            /* Turquesa oscuro */
+            --primary-light: #22d3ee;
+            /* Turquesa claro */
+            --primary-dark: #0e7490;
+            /* Azul petróleo */
+            --accent: #d97706;
+            /* Dorado/Arena */
+            --accent-light: #f59e0b;
+            --terracotta: #c2410c;
+            /* Color de contraste para botón Menú */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f0f9ff;
+            --white: #ffffff;
+            --booking-color: #15803d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar-guayabitos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, white);
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* COMPOSTELA */
+        .brand-main {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #e5e5e5);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* cerca de ti */
+        .brand-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #d8d8d8;
+            margin-left: 6px;
+        }
+
+
+        /* Ajuste Responsive para móviles */
+        @media (max-width: 768px) {
+            .logo-text {
+                flex-direction: column;
+                /* En móvil uno debajo del otro */
+                align-items: center;
+                gap: 0;
+            }
+
+            .brand-main {
+                font-size: 1.4rem;
+            }
+
+            .brand-slogan {
+                font-size: 1.1rem;
+                margin-top: -5px;
+            }
+        }
+
+        .btn-volver {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-hospedaje {
+            height: 50vh;
+            /* Imagen alusiva a bungalows o vista al mar */
+            background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/ca/8e/31/pool.jpg?w=1200&h=-1&s=1');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Un poco más oscuro */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- BOTÓN DE FILTRO --- */
+        .btn-filter {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            z-index: 100;
+        }
+
+        .btn-filter:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* --- MODAL DE FILTROS --- */
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .filter-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .filter-modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-modal.active .filter-modal-content {
+            transform: scale(1);
+        }
+
+        .filter-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .filter-modal-header h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .close-filter-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s, transform 0.3s;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-filter-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .filter-option {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .filter-option i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .filter-option:hover {
+            background: #fff;
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .filter-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-option.active i {
+            color: white;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .container-hospedaje {
+            max-width: 1200px;
+            margin: 3rem auto 8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* --- CARDS --- */
+        .hotel-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-card.fade-in {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-image {
+            height: 220px;
+            overflow: hidden;
+            background-color: #cbd5e1;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hotel-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .hotel-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 0 0 0.8rem 0;
+            font-weight: 700;
+        }
+
+        .hotel-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .btn-info {
+            flex: 1;
+            min-width: 45%;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .card-footer.has-precio .btn-precio {
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        .btn-direccion {
+            background-color: #ecfeff;
+            color: var(--primary-dark);
+            border: 1px solid #cffafe;
+        }
+
+        .btn-contacto {
+            background-color: #f0f9ff;
+            color: #1e40af;
+            border: 1px solid #dbeafe;
+        }
+
+        .btn-precio {
+            background-color: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+        }
+
+        .btn-direccion:hover {
+            background-color: #cffafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-contacto:hover {
+            background-color: #dbeafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-precio:hover {
+            background-color: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL DE INFORMACIÓN --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-icon-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            /* Dorado para el icono del modal */
+        }
+
+        #modal-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        #modal-info {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Botón Mapas */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(194, 65, 12, 0.3);
+        }
+
+        .btn-maps:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Botón Reservar / Sitio Web */
+        .btn-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--booking-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-booking:hover {
+            background-color: #14532d;
+            transform: translateY(-2px);
+        }
+
+        .btn-maps.hidden,
+        .btn-booking.hidden {
+            display: none !important;
+        }
+
+        /* --- MENÚ FLOTANTE --- */
+        .floating-nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1500;
+            pointer-events: none;
+
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-nav-container.hidden-by-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .floating-nav-container.stopped {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: auto;
+        }
+
+        .floating-nav {
+            pointer-events: auto;
+            background-color: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 25px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-pill-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-pill-btn:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .pill-icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        .pill-text {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .main-btn {
+            position: relative;
+            top: -15px;
+        }
+
+        .pill-icon-main {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.4);
+            border: 4px solid #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover .pill-icon-main {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.6);
+        }
+
+        .pill-text-main {
+            margin-top: 5px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- OVERLAY MENU --- */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-content {
+            background: transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            /* Ocultar scrollbar pero mantener funcionalidad */
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        .menu-overlay.active .menu-content {
+            transform: scale(1);
+        }
+
+        .menu-header {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: none;
+        }
+
+        .menu-title-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        .menu-close:active {
+            transform: rotate(90deg) scale(0.9);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            background: transparent;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            /* Mejoras para táctil */
+            min-height: 60px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-item:active {
+            transform: translateX(5px) scale(0.98);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .menu-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary, #FF8C42);
+            transition: all 0.3s;
+            flex-shrink: 0;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .menu-item:hover .menu-item-icon {
+            transform: scale(1.2);
+        }
+
+        .menu-item:active .menu-item-icon {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar personalizada */
+        .menu-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .menu-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .menu-title-text {
+                font-size: 1.5rem;
+            }
+
+            .menu-item {
+                font-size: 1rem;
+                padding: 1.3rem 1.2rem;
+                min-height: 65px;
+                gap: 12px;
+            }
+
+            .menu-item-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 1.4rem 1rem;
+                min-height: 70px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hotels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hotels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-hospedaje {
+                height: 35vh;
+            }
+
+            .navbar-guayabitos {
+                padding: 1rem;
+            }
+
+            .floating-nav {
+                padding: 5px 15px;
+                gap: 15px;
+            }
+
+            .pill-icon-main {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .main-btn {
+                top: -10px;
+            }
+
+            .btn-filter {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .menu-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar-guayabitos">
+        <div class="logo-container">
+            <h1 class="logo-text">
+                <span class="brand-main">GUAYABITOS</span>
+                <span class="brand-slogan">cerca de ti</span>
+            </h1>
+        </div>
+        <a href="guayabitos.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </nav>
+
+    <header class="hero-hospedaje">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hospedaje</h1>
+                <p class="banner-subtitle">
+                    Descansa en bungalows acogedores, hoteles familiares y los mejores RV Parks de la región.
+                </p>
+            </div>
+            <button id="btn-filter" class="btn-filter" aria-label="Filtrar">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container-hospedaje">
+        <div class="hotels-grid">
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://scontent.ftpq1-1.fna.fbcdn.net/v/t39.30808-6/593085214_1280996124070229_7491797785197170594_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=AuFn3rLGHdIQ7kNvwE4dbd8&_nc_oc=AdlNVaMJUOsIVEWziIX5o_iim16Q5G9BImHlszES25VsqURNNRjel17LpuHQxc53ZtcmKJiBLF55jpTxYpVOLrJd&_nc_zt=23&_nc_ht=scontent.ftpq1-1.fna&_nc_gid=EIXwACHhGxzoSoglih3sjw&oh=00_AfqSv10NtO39pUrQfYeHjF6FAFrgG0gfb_5wVqfL4lzp_Q&oe=69708D4E"
+                        alt="Villas & Suite Santa Mónica">
+                </div>
+                <div class="card-content">
+                    <h3 class="attraction-title">Villas & Suite Santa Mónica</h3>
+                    <p class="attraction-description">Alojamiento tranquilo en Guayabitos ideal para familias o parejas
+                        que buscan una estancia discreta y cercana a la playa. Ofrece habitaciones cómodas en un
+                        ambiente relajado con fácil acceso a servicios locales.</p>
+                    <div class="card-footer">
+                        <button class="btn-info btn-direccion" data-title="Villas & Suite Santa Mónica"
+                            data-info="Calle Retorno Albatros 25 Rincón de Guayabitos, 63724 La Peñita de Jaltemba, Nay."
+                            data-link="https://www.google.com/maps/place/Villas+%26+Suite+Santa+M%C3%B3nica/@21.0305785,-105.2629119,17z/data=!4m10!3m9!1s0x842125b3ac6a7c61:0xfee092501b98c761!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0305785!4d-105.2629119!16s%2Fg%2F12m9205bg?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 1314">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $700–$1,500 MXN">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/734566021.jpg?k=097c601d2bd0b8698ddf631c98d4ddbf5ad03b2acc617cfa162815b650274de9&o="
+                        alt="Vacacional Luna Mar | Rincón de Guayabitos Nayarit">
+                </div>
+                <div class="card-content">
+                    <h3 class="attraction-title">Vacacional Luna Mar | Rincón de Guayabitos Nayarit</h3>
+                    <p class="attraction-description">Hospedaje tipo vacacional/apartamento con alberca al aire libre y
+                        Wi-Fi, ideal para viajeros que desean explorar Guayabitos con mayor independencia.</p>
+                    <div class="card-footer">
+                        <button class="btn-info btn-direccion"
+                            data-title="Vacacional Luna Mar | Rincón de Guayabitos Nayarit"
+                            data-info="Pelícanos 36, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Vacacional+Luna+Mar+%7C+Rinc%C3%B3n+de+Guayabitos+Nayarit/@21.0318178,-105.2617556,17z/data=!4m10!3m9!1s0x842125b3c0435469:0xc250e1394b9681ac!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0318178!4d-105.2617556!16s%2Fg%2F11cn78872y?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (311) 234 2709">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $1,500–$2,000 MXN"
+                            data-booking-link="http://www.vacacionallunamar.com.mx/">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://travelagents.decameron.com/images/destinos/mexico/los-cocos/los-cocos-13.png"
+                        alt="Decameron Los Cocos Guayabitos, Ramada All Inclusive Resort">
+                </div>
+                <div class="card-content">
+                    <h3 class="attraction-title">Decameron Los Cocos Guayabitos, Ramada All Inclusive Resort</h3>
+                    <p class="attraction-description">Resort todo incluido frente al mar con varias piscinas,
+                        restaurantes, actividades diarias, deportes y entretenimiento para toda la familia. Tiene acceso
+                        directo a la playa y múltiples amenidades recreativas y gastronómicas.</p>
+                    <div class="card-footer">
+                        <button class="btn-info btn-direccion"
+                            data-title="Decameron Los Cocos Guayabitos, Ramada All Inclusive Resort"
+                            data-info="Avenida Retorno Las Palmas Rincón de Guayabitos, 63724 Nayarit, Nay."
+                            data-link="https://www.google.com/maps/place/Decameron+Los+Cocos+Guayabitos,+Ramada+All+Inclusive+Resort/@21.0225167,-105.2777702,18z/data=!4m10!3m9!1s0x842124508fdd2957:0xa9edd4399da08dc6!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0225167!4d-105.2764827!16s%2Fg%2F1tg160zh?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: 800 011 1111">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $2,000–$3,000+ MXN"
+                            data-booking-link="https://www.decameron.com/es/hoteles/rincon-de-guayabitos/decameron-los-cocos/?partner=8945&utm_source=google&utm_medium=organic&utm_campaign=GoogleMyBusiness&utm_content=crlc">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://images.trvl-media.com/lodging/28000000/27580000/27575700/27575605/0dc29732.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill"
+                        alt="Hotel Auroza Resort">
+                </div>
+                <div class="card-content">
+                    <h3 class="attraction-title">Hotel Auroza Resort</h3>
+                    <p class="attraction-description">Hotel con alberca, Wi-Fi y ubicación céntrica a pocos minutos de
+                        la playa principal de Guayabitos. Ideal para turismo familiar o parejas buscando una experiencia
+                        relajada con amenidades modernas.</p>
+                    <div class="card-footer">
+                        <button class="btn-info btn-direccion" data-title="Hotel Auroza Resort"
+                            data-info="Av. Sol Nuevo 58, Centro, 63724 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Hotel+Auroza+Resort/@21.0235346,-105.2716704,17z/data=!4m10!3m9!1s0x84212453a7eb37b1:0x9778a263e9bf7e63!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0230023!4d-105.2697616!16s%2Fg%2F11f4wtfcqw?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 1161">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $1,500–$2,800 MXN"
+                            data-booking-link="https://hotelaurozaresort.com.mx/">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://cdn5.travelconline.com/images/fit-in/2000x0/filters:quality(75):strip_metadata():format(webp)/https%3A%2F%2Fi.travelapi.com%2Flodging%2F37000000%2F36760000%2F36754500%2F36754452%2F7646e59a_z.jpg"
+                        alt="Decameron La Marina Guayabitos">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Decameron La Marina Guayabitos</h3>
+                    <p class="hotel-description">Resort moderno todo incluido en la playa de Guayabitos con amplias
+                        instalaciones, actividades diurnas y nocturnas, restaurantes buffet y a la carta, bares y
+                        entretenimiento para visitantes de todas las edades.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Decameron La Marina Guayabitos"
+                            data-info="Calle retorno ceibas Lote 3 manzana 9 seccion O zona K fraccionamiento, Av. Sol Nuevo, 63727 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Decameron+La+Marina+Guayabitos,+Ramada+All+Inclusive+Resort/@21.0227939,-105.2746419,17z/data=!4m10!3m9!1s0x842125a7651ccdb7:0x346be2fe021759f6!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0227939!4d-105.2746419!16s%2Fg%2F11fs9_9nnr?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: 800 011 1111">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $2,000–$2,500+ MXN"
+                            data-booking-link="https://www.decameron.com/es/hoteles/rincon-de-guayabitos/decameron-la-marina/?partner=8945&utm_source=google&utm_medium=organic&utm_campaign=GoogleMyBusiness&utm_content=crlc">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_627,q_auto,w_1200/partner-images/27/9c/51f3d0644e700dc9ff9273d4ef4c3f61d363ab23204f31dbf657958cfda5.jpeg"
+                        onerror="this.src='https://images.squarespace-cdn.com/content/v1/5c18f375b27e390c9b6f8f07/1553535035272-3Y842228882228282228/rv-park-mexico.jpg'"
+                        alt="Casablanca Resort">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Casablanca Resort</h3>
+                    <p class="hotel-description">Resort frente al mar con piscina exterior amplia, zonas de jardín,
+                        acceso directo a playa, restaurante frente al mar, spa y servicios familiares. Ofrece vistas
+                        panorámicas y ambiente tranquilo ideal para descanso y paseo.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Casablanca Resort"
+                            data-info="Rtno. Jacarandas 1, Zona Hotelera, 63726 Rincón de Guayabitos, Nay."
+                            data-link="https://www.google.com/maps/place/Casablanca+Resort/@21.0252035,-105.2677392,17z/data=!4m10!3m9!1s0x84273723814b6f83:0x92ec33b41015cb26!5m3!1s2026-01-28!4m1!1i2!8m2!3d21.0252035!4d-105.2677392!16s%2Fg%2F1tdk5hcr?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 0632">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $2,000–$3,000 MXN"
+                            data-booking-link="http://casablancaguayabitos.com/">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <div id="filter-modal" class="filter-modal">
+        <div class="filter-modal-content">
+            <div class="filter-modal-header">
+                <h3>Filtrar Hospedaje</h3>
+                <button class="close-filter-modal" id="close-filter-modal">×</button>
+            </div>
+            <div class="filter-options">
+                <div class="filter-option active" data-filter="todos">
+                    <i class="fas fa-layer-group"></i> Todos
+                </div>
+                <div class="filter-option" data-filter="bungalows">
+                    <i class="fas fa-home"></i> Bungalows
+                </div>
+                <div class="filter-option" data-filter="hoteles">
+                    <i class="fas fa-hotel"></i> Hoteles
+                </div>
+                <div class="filter-option" data-filter="rvparks">
+                    <i class="fas fa-caravan"></i> RV Parks
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-icon-header">
+                <i class="fas fa-info-circle" id="modal-icon"></i>
+            </div>
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-info">Información detallada...</p>
+            <a href="#" id="modal-map-btn" class="btn-maps hidden" target="_blank">
+                <i class="fas fa-map-marked-alt"></i> Ver en Mapa
+            </a>
+            <a href="#" id="modal-booking-btn" class="btn-booking hidden" target="_blank">
+                <i class="fas fa-calendar-check"></i> Reservar / Sitio Web
+            </a>
+        </div>
+    </div>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav">
+            <button class="nav-pill-btn" onclick="window.location.href='../../index.html#mapa-section'">
+                <div class="pill-icon"><i class="fas fa-home"></i></div>
+                <span class="pill-text">INICIO</span>
+            </button>
+            <button class="nav-pill-btn main-btn" onclick="toggleOverlayMenu()">
+                <div class="pill-icon-main"><i class="fas fa-bars"></i></div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+            <button class="nav-pill-btn" onclick="window.location.href='../eventos.html'">
+                <div class="pill-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="pill-text">EVENTOS</span>
+            </button>
+        </nav>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="btn-menu-close" class="menu-close">×</button>
+            <div class="menu-header">
+                <h2 class="menu-title-text">Explora Guayabitos</h2>
+            </div>
+            <nav class="menu-list">
+                <a href="atractivos-turisticos-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-landmark"></i>
+                    </span>
+                    Atractivos Turísticos
+                </a>
+                <a href="hospedajes-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-hotel"></i>
+                    </span>
+                    Hospedaje
+                </a>
+                <a href="gastronomia-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                    Gastronomía
+                </a>
+                <a href="isla-coral.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </span>
+                    Isla del Coral
+                </a>
+                <a href="operadores-turisticos-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </span>
+                    Operadores Turísticos
+                </a>
+                <a href="eventos-temporada-guayabitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </span>
+                    Eventos de Temporada
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-top: 1rem;">&copy; 2026 Turismo Compostela - Guayabitos</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            function hideFloatingNav() {
+                floatingNav?.classList.add('hidden-by-overlay');
+            }
+
+            function showFloatingNav() {
+                floatingNav?.classList.remove('hidden-by-overlay');
+            }
+
+
+            // Inicializar AOS
+            AOS.init({
+                once: true,
+                offset: 100,
+                duration: 800,
+                easing: 'ease-out-cubic'
+            });
+
+            // --- 1. LÓGICA DE FILTROS ---
+            const filterBtn = document.getElementById('btn-filter');
+            const filterModal = document.getElementById('filter-modal');
+            const closeFilterBtn = document.getElementById('close-filter-modal');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const cards = document.querySelectorAll('.hotel-card');
+
+            // Abrir modal filtro
+            filterBtn.addEventListener('click', () => {
+                filterModal.classList.add('active');
+                hideFloatingNav();
+                document.body.style.overflow = 'hidden';
+            });
+
+
+
+            // Cerrar modal filtro
+            closeFilterBtn.addEventListener('click', () => {
+                filterModal.classList.remove('active');
+                showFloatingNav();
+                document.body.style.overflow = '';
+            });
+
+            //Click Afuera
+            filterModal.addEventListener('click', (e) => {
+                if (e.target === filterModal) {
+                    filterModal.classList.remove('active');
+                    showFloatingNav();
+                    document.body.style.overflow = '';
+                }
+            });
+
+
+
+            // Aplicar filtro
+            filterOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+
+                    const filterValue = option.getAttribute('data-filter');
+
+                    cards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+
+                        card.classList.remove('fade-in');
+                        void card.offsetWidth; // Trigger reflow
+
+                        if (filterValue === 'todos' || category === filterValue || (filterValue === 'hoteles' && category === 'todo-incluido')) {
+                            card.style.display = 'flex';
+                            setTimeout(() => card.classList.add('fade-in'), 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    setTimeout(() => {
+                        filterModal.classList.remove('active');
+                        showFloatingNav();
+                        document.body.style.overflow = '';
+                    }, 300);
+
+                });
+            });
+
+            // --- 2. LÓGICA DEL MODAL DE INFORMACIÓN ---
+            const infoModal = document.getElementById('info-modal');
+            const closeInfoModal = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalInfo = document.getElementById('modal-info');
+            const modalMapBtn = document.getElementById('modal-map-btn');
+            const modalBookingBtn = document.getElementById('modal-booking-btn');
+            const modalIcon = document.getElementById('modal-icon');
+
+            // Botones que abren modal
+            const btnsDireccion = document.querySelectorAll('.btn-direccion');
+            const btnsContacto = document.querySelectorAll('.btn-contacto');
+            const btnsPrecio = document.querySelectorAll('.btn-precio');
+
+            function openInfoModal(title, info, type, link = '#') {
+                modalTitle.textContent = title;
+                modalInfo.innerHTML = info;
+
+                // Reset buttons
+                modalMapBtn.classList.add('hidden');
+                modalBookingBtn.classList.add('hidden');
+
+                if (type === 'map') {
+                    modalIcon.className = 'fas fa-info-circle';
+                    modalIcon.style.color = '#d97706';
+                    if (link && link !== '#') {
+                        modalMapBtn.href = link;
+                        modalMapBtn.classList.remove('hidden');
+                    }
+                } else if (type === 'contact') {
+                    modalIcon.className = 'fas fa-info-circle';
+                    modalIcon.style.color = '#d97706';
+                } else if (type === 'price') {
+                    modalIcon.className = 'fas fa-info-circle';
+                    modalIcon.style.color = '#d97706';
+                    if (link && link !== '#') {
+                        modalBookingBtn.href = link;
+                        modalBookingBtn.classList.remove('hidden');
+                    }
+                }
+
+                infoModal.classList.add('active');
+            }
+
+            btnsDireccion.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openInfoModal(btn.getAttribute('data-title'), btn.getAttribute('data-info'), 'map', btn.getAttribute('data-link'));
+                });
+            });
+
+            btnsContacto.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openInfoModal(btn.getAttribute('data-title'), btn.getAttribute('data-info'), 'contact');
+                });
+            });
+
+            btnsPrecio.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openInfoModal(btn.getAttribute('data-title'), btn.getAttribute('data-info'), 'price', btn.getAttribute('data-booking-link'));
+                });
+            });
+
+            closeInfoModal.addEventListener('click', () => {
+                infoModal.classList.remove('active');
+            });
+
+            infoModal.addEventListener('click', (e) => {
+                if (e.target === infoModal) {
+                    infoModal.classList.remove('active');
+                }
+            });
+
+            // --- 3. MENÚ FLOTANTE Y OVERLAY ---
+            window.toggleOverlayMenu = function () {
+                const overlay = document.getElementById('menu-overlay');
+                overlay.classList.toggle('active');
+
+                if (overlay.classList.contains('active')) {
+                    hideFloatingNav();
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    showFloatingNav();
+                    document.body.style.overflow = '';
+                }
+            }
+
+
+            const btnMenuClose = document.getElementById('btn-menu-close');
+            if (btnMenuClose) {
+                btnMenuClose.addEventListener('click', () => {
+                    document.getElementById('menu-overlay').classList.remove('active');
+                    showFloatingNav();
+                    document.body.style.overflow = '';
+                });
+
+            }
+
+            // --- 4. SCROLL DEL MENÚ FLOTANTE ---
+            const footer = document.querySelector('footer');
+
+            function handleNavScroll() {
+                if (!footer || !floatingNav) return;
+
+                const scrollBottom = window.scrollY + window.innerHeight;
+                const footerTop = footer.offsetTop;
+                const stopMargin = 30;
+
+                if (scrollBottom > footerTop + stopMargin) {
+                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
+                    floatingNav.classList.add('stopped');
+                    floatingNav.style.position = 'absolute';
+                    floatingNav.style.top = absoluteTop + 'px';
+                    floatingNav.style.bottom = 'auto';
+                } else {
+                    floatingNav.classList.remove('stopped');
+                    floatingNav.style.position = 'fixed';
+                    floatingNav.style.top = 'auto';
+                    floatingNav.style.bottom = '30px';
+                }
+            }
+
+            window.addEventListener('scroll', handleNavScroll);
+            window.addEventListener('resize', handleNavScroll);
+            handleNavScroll();
+        });
+    </script>
+</body>
+
+</html>

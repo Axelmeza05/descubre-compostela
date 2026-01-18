@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedaje | Compostela Pueblo Mágico</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/styles.css">
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --primary: #7f1d1d;
+            --color-terracota: #D4704C;
+            --color-turquesa: #00A8CC;
+            --color-dark: #221e1f;
+            --color-text: #333;
+            --font-main: 'Montserrat', sans-serif;
+            --accent: #d97706;
+            --terracotta: #c2410c;
+            --booking-color: #15803d;
+            /* Verde para botón de reservar */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        /* --- NAVBAR STICKY --- */
+        .navbar-compostela {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, white);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 1px;
+            font-family: 'Lora', serif;
+        }
+
+        /* COMPOSTELA */
+        .brand-main {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #e5e5e5);
+            background-clip: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* cerca de ti */
+        .brand-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #d8d8d8;
+            margin-left: 6px;
+        }
+
+
+        /* Ajuste Responsive para móviles */
+        @media (max-width: 768px) {
+            .logo-text {
+                flex-direction: column;
+                /* En móvil uno debajo del otro */
+                align-items: center;
+                gap: 0;
+            }
+
+            .brand-main {
+                font-size: 1.4rem;
+            }
+
+            .brand-slogan {
+                font-size: 1.1rem;
+                margin-top: -5px;
+            }
+        }
+
+        .btn-volver {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* --- HERO BANNER (HOSPEDAJE) --- */
+        .hero-hospedaje {
+            height: 40vh;
+            /* Imagen alusiva a hotel/descanso */
+            background-image: url('https://visitmexico.com/media/usercontent/6826521b74949-680af1be57298-COMPOSTELA-CENTRO1_gmxdot_jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0.5rem 0 0 0;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- BOTÓN DE FILTRO --- */
+        .btn-filter {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            z-index: 100;
+        }
+
+        .btn-filter:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* --- MODAL DE FILTROS --- */
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .filter-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .filter-modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-modal.active .filter-modal-content {
+            transform: scale(1);
+        }
+
+        .filter-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .filter-modal-header h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--color-terracota);
+        }
+
+        .close-filter-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s, transform 0.3s;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-filter-modal:hover {
+            color: var(--color-terracota);
+            transform: rotate(90deg);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .filter-option {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .filter-option i {
+            color: var(--color-terracota);
+            font-size: 1.2rem;
+        }
+
+        .filter-option:hover {
+            background: #fff;
+            border-color: var(--color-terracota);
+            transform: translateX(8px);
+        }
+
+        .filter-option.active {
+            background: var(--color-terracota);
+            color: white;
+            border-color: var(--color-terracota);
+        }
+
+        .filter-option.active i {
+            color: white;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .container-hospedaje {
+            max-width: 1200px;
+            margin: 3rem auto 8rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* --- CARDS (HOTEL) --- */
+        .hotel-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: opacity 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hotel-card.fade-in {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hotel-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .hotel-title {
+            font-size: 1.15rem;
+            color: #222;
+            margin: 0 0 0.8rem 0;
+            font-weight: 700;
+        }
+
+        .hotel-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .btn-info {
+            flex: 1;
+            min-width: 45%;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .card-footer.has-precio .btn-precio {
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        .btn-direccion {
+            background-color: #ecfeff;
+            color: #0e7490;
+            border: 1px solid #cffafe;
+        }
+
+        .btn-contacto {
+            background-color: #f0f9ff;
+            color: #1e40af;
+            border: 1px solid #dbeafe;
+        }
+
+        .btn-precio {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .btn-direccion:hover {
+            background-color: #cffafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-contacto:hover {
+            background-color: #dbeafe;
+            transform: translateY(-2px);
+        }
+
+        .btn-precio:hover {
+            background-color: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL DE INFORMACIÓN --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-icon-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #modal-title {
+            color: #222;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        #modal-info {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Botón Mapas */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--color-turquesa);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(194, 65, 12, 0.3);
+        }
+
+        .btn-maps:hover {
+            background-color: #008ba8;
+            transform: translateY(-2px);
+        }
+
+        /* Botón Reservar / Sitio Web (Nuevo estilo) */
+        .btn-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--booking-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-booking:hover {
+            background-color: #14532d;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ========================================================
+           MENÚ FLOTANTE (ESTILO "PASTILLA" UNIFICADO)
+           ======================================================== */
+        .floating-nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1500;
+            pointer-events: none;
+            transition: bottom 0.1s ease-out;
+        }
+
+        .floating-nav-container.hidden-by-overlay {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+
+        .floating-nav-container.stopped {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: auto;
+        }
+
+        .floating-nav {
+            pointer-events: auto;
+            background-color: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 25px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-pill-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #b0b0b0;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-pill-btn:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .pill-icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        .pill-text {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .main-btn {
+            position: relative;
+            top: -15px;
+        }
+
+        .pill-icon-main {
+            background: linear-gradient(135deg, var(--accent), var(--terracotta));
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+            border: 4px solid #141414;
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover .pill-icon-main {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.6);
+        }
+
+        .pill-text-main {
+            margin-top: 5px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- OVERLAY MENU (PANTALLA COMPLETA) --- */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-content {
+            background: transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            /* Ocultar scrollbar pero mantener funcionalidad */
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        .menu-overlay.active .menu-content {
+            transform: scale(1);
+        }
+
+        .menu-header {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: none;
+        }
+
+        .menu-title-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        .menu-close:active {
+            transform: rotate(90deg) scale(0.9);
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            background: transparent;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            /* Mejoras para táctil */
+            min-height: 60px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-item:active {
+            transform: translateX(5px) scale(0.98);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .menu-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary, #FF8C42);
+            transition: all 0.3s;
+            flex-shrink: 0;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .menu-item:hover .menu-item-icon {
+            transform: scale(1.2);
+        }
+
+        .menu-item:active .menu-item-icon {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar personalizada */
+        .menu-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .menu-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .menu-title-text {
+                font-size: 1.5rem;
+            }
+
+            .menu-item {
+                font-size: 1rem;
+                padding: 1.3rem 1.2rem;
+                min-height: 65px;
+                gap: 12px;
+            }
+
+            .menu-item-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 1.4rem 1rem;
+                min-height: 70px;
+            }
+        }
+
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #888;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-turquesa);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hotels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hotels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-hospedaje {
+                height: 35vh;
+            }
+
+            .navbar-compostela {
+                padding: 1rem;
+            }
+
+            .floating-nav {
+                padding: 5px 15px;
+                gap: 15px;
+            }
+
+            .pill-icon-main {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .main-btn {
+                top: -10px;
+            }
+
+            .overlay-content h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .overlay-links a {
+                font-size: 1.4rem;
+            }
+
+            .close-overlay {
+                top: -50px;
+                right: 10px;
+                font-size: 3rem;
+            }
+        }
+
+        /* ========================================================
+   OCULTAR MENÚ FLOTANTE CUANDO EL OVERLAY ESTÁ ACTIVO
+   ======================================================== */
+        .menu-overlay.active~.floating-nav-container,
+        .menu-overlay.active+.floating-nav-container {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        /* Transición suave del menú flotante */
+        .floating-nav-container {
+            transition: opacity 0.3s ease,
+                visibility 0.3s ease,
+                transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar-compostela">
+        <div class="logo-container">
+            <h1 class="logo-text">
+                <span class="brand-main">COMPOSTELA</span>
+                <span class="brand-slogan">cerca de ti</span>
+            </h1>
+        </div>
+        <a href="compostela.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </nav>
+
+    <header class="hero-hospedaje">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Hospedaje</h2>
+                <p class="banner-subtitle">
+                    Descansa en la comodidad y calidez de nuestro Pueblo Mágico.
+                </p>
+            </div>
+
+            <button id="btn-filter" class="btn-filter" aria-label="Filtrar">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container-hospedaje">
+        <div class="hotels-grid">
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://akawe.com.mx/backend/ctrl/imgs/principal/hotel_1.jpg" alt="Hotel Akawe">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Hotel Akawe</h3>
+                    <p class="hotel-description">Hotel conocido por sus habitaciones limpias, modernas ,
+                        comodas y restaurante propio.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Hotel Akawe"
+                            data-info="Wenceslao Sandoval 261, Col del Bosque, 63703 Compostela, Nay."
+                            data-link="https://www.google.com/maps/place/Hotel+Akawe/@21.2300417,-104.9037715,17z/data=!3m1!5s0x842729a8dfc657b1:0xc1460cd3ccf2fba8!4m9!3m8!1s0x842729b8345900bf:0xa4bf312615e5d6bf!5m2!4m1!1i2!8m2!3d21.2300417!4d-104.9011966!16s%2Fg%2F11r7gt8zs3?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 121 7099">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde $1,000 MXN / noche" data-booking-link="https://akawe.com.mx/">
+                            <i class="fas fa-bed"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2020/10/jardin-estrellas-ok.jpg"
+                        alt="Hotel Jardín de Estrellas">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Hotel Jardín de Estrellas</h3>
+                    <p class="hotel-description">Hotel de cuatro estrellas es conocido por su limpieza, confort y
+                        jardines agradables.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Hotel Jardín de Estrellas"
+                            data-info="C. Toluca 341, Librado Rivera, 63704 Compostela, Nay."
+                            data-link="https://www.google.com/maps/place/Hotel+Jard%C3%ADn+de+estrellas/@21.2365295,-104.9184733,17z/data=!4m10!3m9!1s0x8427293e301928ed:0x3e158332ae6e8f20!5m3!1s2026-01-15!4m1!1i2!8m2!3d21.2365295!4d-104.9158984!16s%2Fg%2F11fkbfj3g2?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 688 1819">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde $800 MXN / noche" data-booking-link="https://ejemplo.com/reserva-cabanas">
+                            <i class="fas fa-bed"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/555426750_122117447528980863_9204432095898391031_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=NaPyx22OR5IQ7kNvwEIIlDB&_nc_oc=AdlERNVbCOBAZzvVuH3g3NqYCCkUc411T-doatAUx8IJH0YpHNn-1Iia8Nuj1KwLy74aBC0pTRuP9-i3w2lA8RVC&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=5QllSlBVDO7HQLuQ5sV5kw&oh=00_Afol3Mqy7KAr_0Nm6JmptRbHz4KRBAfC5NtAfI2kQCmPNA&oe=696E143E"
+                        alt="Hotel plaza de compostela">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Hotel plaza de compostela</h3>
+                    <p class="hotel-description">Hotel conocido por su excelente relación calidad-precio y limpieza.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Hotel plaza de compostela"
+                            data-info="Hidalgo 9, Santa Ana, 63700 Compostela, Nay."
+                            data-link="https://www.google.com/maps/place/Hotel+Plaza+de+Compostela/@21.2374795,-104.9033847,17z/data=!4m10!3m9!1s0x84272907002f5c43:0x63029708bc430424!5m3!1s2026-01-15!4m1!1i2!8m2!3d21.2374795!4d-104.9008098!16s%2Fg%2F11cndhw45q?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 277 0064">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde $800 MXN / noche">
+                            <i class="fas fa-bed"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t39.30808-6/555426750_122117447528980863_9204432095898391031_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=NaPyx22OR5IQ7kNvwEIIlDB&_nc_oc=AdlERNVbCOBAZzvVuH3g3NqYCCkUc411T-doatAUx8IJH0YpHNn-1Iia8Nuj1KwLy74aBC0pTRuP9-i3w2lA8RVC&_nc_zt=23&_nc_ht=scontent.fgdl2-1.fna&_nc_gid=5QllSlBVDO7HQLuQ5sV5kw&oh=00_Afol3Mqy7KAr_0Nm6JmptRbHz4KRBAfC5NtAfI2kQCmPNA&oe=696E143E"
+                        alt="Hotel Condesa">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Hotel Condesa</h3>
+                    <p class="hotel-description">Hotel conocido por su excelente relación calidad-precio y limpieza.
+                    </p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Hotel Condesa"
+                            data-info="Hidalgo 9, Santa Ana, 63700 Compostela, Nay."
+                            data-link="https://www.google.com/maps/place/Hotel+Plaza+de+Compostela/@21.2374795,-104.9033847,17z/data=!4m10!3m9!1s0x84272907002f5c43:0x63029708bc430424!5m3!1s2026-01-15!4m1!1i2!8m2!3d21.2374795!4d-104.9008098!16s%2Fg%2F11cndhw45q?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 277 0064">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde $800 MXN / noche">
+                            <i class="fas fa-bed"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <div id="filter-modal" class="filter-modal">
+        <div class="filter-modal-content">
+            <div class="filter-modal-header">
+                <h3>Tipo de Hospedaje</h3>
+                <button class="close-filter-modal" id="close-filter">×</button>
+            </div>
+            <div class="filter-options">
+                <div class="filter-option active" data-filter="all">
+                    <i class="fas fa-border-all"></i> Todos
+                </div>
+                <div class="filter-option" data-filter="hoteles">
+                    <i class="fas fa-hotel"></i> Hoteles
+                </div>
+                <div class="filter-option" data-filter="cabanas">
+                    <i class="fas fa-tree"></i> Cabañas
+                </div>
+                <div class="filter-option" data-filter="hostales">
+                    <i class="fas fa-bed"></i> Hostales / Posadas
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-icon-header">
+                <i class="fas fa-info-circle" id="modal-icon"></i>
+            </div>
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-info">Información detallada...</p>
+
+            <a href="#" target="_blank" id="modal-map-btn" class="btn-maps hidden">
+                <i class="fas fa-map-marked-alt"></i> Ubicación
+            </a>
+
+            <a href="#" target="_blank" id="modal-booking-btn" class="btn-booking hidden">
+                <i class="fas fa-globe"></i> Visitar Sitio Web
+            </a>
+        </div>
+    </div>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav">
+            <button class="nav-pill-btn" onclick="window.location.href='../../index.html'">
+                <div class="pill-icon"><i class="fas fa-home"></i></div>
+                <span class="pill-text">INICIO</span>
+            </button>
+            <button class="nav-pill-btn main-btn" onclick="toggleOverlayMenu()">
+                <div class="pill-icon-main"><i class="fas fa-bars"></i></div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+            <button class="nav-pill-btn" onclick="window.location.href='../eventos.html'">
+                <div class="pill-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="pill-text">EVENTOS</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- MENÚ OVERLAY (ESTILO GASTRONOMÍA - CENTRADO CON ICONOS NARANJAS) -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="btn-menu-close" class="menu-close">×</button>
+            <div class="menu-header">
+                <h2 class="menu-title-text">Explora Compostela</h2>
+            </div>
+            <nav class="menu-list">
+                <a href="atractivos-turisticos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-landmark"></i>
+                    </span>
+                    Atractivos Turísticos
+                </a>
+                <a href="hospedajes-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-hotel"></i>
+                    </span>
+                    Hospedaje
+                </a>
+                <a href="gastronomia-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                    Gastronomía
+                </a>
+                <a href="andador-cafetero.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-coffee"></i>
+                    </span>
+                    Andador Cafetero
+                </a>
+                <a href="destinos-cercanos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </span>
+                    Destinos Cercanos
+                </a>
+                <a href="operadores-turisticos-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </span>
+                    Operadores Turísticos
+                </a>
+                <a href="eventos-temporada-compostela.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </span>
+                    Eventos de Temporada
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 H. Ayuntamiento de Compostela. Turismo.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. OVERLAY MENU ---
+        function toggleOverlayMenu() {
+            const overlay = document.getElementById('menu-overlay');
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            if (!overlay || !floatingNav) return;
+
+            overlay.classList.toggle('active');
+
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                floatingNav.classList.add('hidden-by-overlay');
+            } else {
+                document.body.style.overflow = '';
+                floatingNav.classList.remove('hidden-by-overlay');
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- 2. MODAL INFORMACIÓN (RESERVA/MAPA) ---
+            const modal = document.getElementById('info-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalInfo = document.getElementById('modal-info');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalMapBtn = document.getElementById('modal-map-btn');
+            const modalBookingBtn = document.getElementById('modal-booking-btn');
+
+            document.querySelectorAll('.btn-info').forEach(button => {
+                button.addEventListener('click', () => {
+                    const title = button.getAttribute('data-title');
+                    const info = button.getAttribute('data-info');
+                    const link = button.getAttribute('data-link');
+                    // Atributo específico para reserva
+                    const bookingLink = button.getAttribute('data-booking-link');
+
+                    modalTitle.textContent = title;
+                    modalInfo.innerHTML = info;
+
+                    // Ocultar botones
+                    modalMapBtn.classList.add('hidden');
+                    modalBookingBtn.classList.add('hidden');
+
+                    if (button.classList.contains('btn-direccion')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                        if (link) {
+                            modalMapBtn.href = link;
+                            modalMapBtn.classList.remove('hidden');
+                        }
+                    } else if (button.classList.contains('btn-contacto')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+                    } else if (button.classList.contains('btn-precio')) {
+                        modalIcon.className = 'fas fa-info-circle';
+                        modalIcon.style.color = '#d97706';
+
+                        // Lógica botón reservar
+                        if (bookingLink) {
+                            modalBookingBtn.href = bookingLink;
+                            modalBookingBtn.classList.remove('hidden');
+                        }
+                    }
+
+                    modal.classList.add('active');
+                });
+            });
+
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            }
+
+            // --- 3. FILTROS ---
+            const btnFilter = document.getElementById('btn-filter');
+            const filterModal = document.getElementById('filter-modal');
+            const closeFilter = document.getElementById('close-filter');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const cards = document.querySelectorAll('.hotel-card');
+
+            if (btnFilter && filterModal) {
+                btnFilter.addEventListener('click', () => {
+                    filterModal.classList.add('active');
+                    floatingNav.classList.add('hidden-by-overlay');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                if (closeFilter) {
+                    closeFilter.addEventListener('click', () => {
+                        filterModal.classList.remove('active');
+                        floatingNav.classList.remove('hidden-by-overlay');
+                        document.body.style.overflow = '';
+                    });
+                }
+
+                filterOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        filterOptions.forEach(opt => opt.classList.remove('active'));
+                        option.classList.add('active');
+                        const filterValue = option.getAttribute('data-filter');
+
+                        cards.forEach(card => {
+                            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                                card.classList.add('fade-in');
+                                setTimeout(() => card.classList.remove('fade-in'), 500);
+                            } else {
+                                card.style.display = 'none';
+                            }
+
+                            filterModal.classList.remove('active');
+                            floatingNav.classList.remove('hidden-by-overlay');
+                            document.body.style.overflow = '';
+
+                        });
+
+                        setTimeout(() => {
+                            filterModal.classList.remove('active');
+                        }, 300);
+                    });
+                });
+
+                filterModal.addEventListener('click', (e) => {
+                    if (e.target === filterModal) {
+                        filterModal.classList.remove('active');
+                        floatingNav.classList.remove('hidden-by-overlay');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+            }
+
+            // --- 4. MENÚ FLOTANTE SCROLL ---
+            const footer = document.querySelector('footer');
+            const floatingNav = document.querySelector('.floating-nav-container');
+
+            function handleNavScroll() {
+                if (!footer || !floatingNav) return;
+
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const scrollBottom = scrollY + windowHeight;
+                const footerTop = footer.offsetTop;
+                const stopMargin = 30;
+
+                if (scrollBottom > footerTop + stopMargin) {
+                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
+                    floatingNav.classList.add('stopped');
+                    floatingNav.style.position = 'absolute';
+                    floatingNav.style.top = `${absoluteTop}px`;
+                    floatingNav.style.bottom = 'auto';
+                } else {
+                    floatingNav.classList.remove('stopped');
+                    floatingNav.style.position = 'fixed';
+                    floatingNav.style.top = 'auto';
+                    floatingNav.style.bottom = '30px';
+                }
+            }
+
+            const btnClose = document.getElementById('btn-menu-close');
+            const menuOverlay = document.getElementById('menu-overlay');
+
+            if (btnClose && menuOverlay && floatingNav) {
+                btnClose.addEventListener('click', () => {
+                    menuOverlay.classList.remove('active');
+                    floatingNav.classList.remove('hidden-by-overlay');
+                    document.body.style.overflow = '';
+                });
+            }
+
+
+            window.addEventListener('scroll', handleNavScroll);
+            window.addEventListener('resize', handleNavScroll);
+            handleNavScroll();
+        });
+    </script>
+</body>
+
+</html>
