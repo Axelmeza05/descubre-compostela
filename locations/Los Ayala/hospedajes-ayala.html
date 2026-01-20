@@ -32,6 +32,7 @@
             --text-light: #64748b;
             --bg-light: #f0f9ff;
             --white: #ffffff;
+            --booking-color: #15803d;
         }
 
         * {
@@ -1015,27 +1016,83 @@
     <main class="container-hospedaje">
         <div class="hotels-grid">
 
+            <article class="hotel-card" data-category="hoteles">
+                <div class="card-image">
+                    <img src="https://scontent.fgdl2-2.fna.fbcdn.net/v/t39.30808-6/555499127_1450393593273739_4486966603939266166_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=EibIgaWxnnYQ7kNvwEYkcDr&_nc_oc=AdkMqLearbXL8C_bda3CFHqYsnBHBPaPCbqsvB5tq3Qv7yhEubBXBulBE1APedkaZOpGL3lQEEoyLNE6XVq6T1UA&_nc_zt=23&_nc_ht=scontent.fgdl2-2.fna&_nc_gid=GOR6VKYagK7Ndju1gtj6KA&oh=00_AfqtrZF_CT-KrqX9pZoj9SqSNvb-pgn_V3ZlrGMqDbEEZw&oe=69730852"
+                        alt="Manglar Pacific">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Manglar Pacific</h3>
+                    <p class="hotel-description">Alojamiento tipo resort / bungalows con habitaciones equipadas con
+                        cocina básica, baño privado, aire acondicionado y vistas al mar o jardín.</p>
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Manglar Pacific"
+                            data-info="Av. Del Estero 188, 63727 Los Ayala, Nay."
+                            data-link="https://www.google.com/maps/place/Manglar+Pacific/@21.0241786,-105.2928698,17z/data=!4m10!3m9!1s0x84212467e8d71e4b:0xfc51243735c67824!5m3!1s2026-01-25!4m1!1i2!8m2!3d21.0241786!4d-105.2902949!16s%2Fg%2F11b73mct04?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 0942">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. $700 – $1,150 MXN"
+                            data-booking-link="https://www.landpage-preview.com/d2c87326-4303-4f0b-9795-610db467fb28">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
             <article class="hotel-card" data-category="bungalows">
                 <div class="card-image">
-                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/159458249.jpg?k=5d9b6e8a4a5e2f7b8c9d0e1f2a3b4c5d6e7f8g9h0i1j2k3l4m5n6o7p8q9r0s1&o=&hp=1"
+                    <img src="https://scontent.fgdl2-3.fna.fbcdn.net/v/t39.30808-6/308480888_399583892330735_4274832411009412329_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=XWxM_SXIIvAQ7kNvwG0yhy3&_nc_oc=AdkZG9ghyONkBDRodB0Z5UlKbgfPdAhefP8qAJca44XvwpmonkCXjT4gpoFrNsAEa5C6xOymZQcNkJOCXHA_anaR&_nc_zt=23&_nc_ht=scontent.fgdl2-3.fna&_nc_gid=Ncz5H-f5OUvihVq2vNuvUw&oh=00_AfqXJq5cEBxS8x4BchED4wJhYCiMxkfzb2-fWvcyMmin3A&oe=697305F1"
+                        alt="Bungalows Villas Belen">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Bungalows Villas Belen</h3>
+                    <p class="hotel-description">Complejo de bungalows con 10 unidades, ideal para familias o grupos,
+                        ubicado cerca de la bahía. Ofrece 2 piscinas al aire libre, recepción 24 h, wifi,
+                        estacionamiento y menú de comodidades como cocineta y ventiladores.</p>
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Bungalows Villas Belen"
+                            data-info="C. Trópico 124, 63724 Los Ayala, Nay."
+                            data-link="https://www.google.com/maps/place/Bungalows+Villas+Belen/@21.022041,-105.2899814,17z/data=!4m10!3m9!1s0x8421245da9da04ff:0x38ea75cff05c7795!5m3!1s2026-01-25!4m1!1i2!8m2!3d21.022041!4d-105.2874065!16s%2Fg%2F11cm150xw5?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 2633">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. MXN $800 – $1,400"
+                            data-booking-link="https://hotels.cloudbeds.com/reservation/jCyFsx">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="bungalows">
+                <div class="card-image">
+                    <img src="https://cdn.prod.website-files.com/6499a89b730c793b22f038f3/64e64b269fbe47ef3451623b_STA%20MTA_2023-55.jpg"
                         alt="Santa Martha Bungalows">
                 </div>
                 <div class="card-content">
                     <h3 class="hotel-title">Santa Martha Bungalows</h3>
-                    <p class="hotel-description">Bungalows frente al mar con ambiente tranquilo y atención familiar.
-                        Ofrecen hospedaje con opciones de desayuno incluido y paquetes especiales para tours como
-                        catamarán o avistamiento de ballenas.</p>
+                    <p class="hotel-description">Búngalos con ambiente tranquilo y tropical, ideal para
+                        descanso y vacaciones. Cuentan con acceso directo a playa con camastros, alberca al aire libre y
+                        restaurante en sitio que sirve cocina local y bebidas.
+                    </p>
                     <div class="card-footer has-precio">
                         <button class="btn-info btn-direccion" data-title="Santa Martha Bungalows"
                             data-info="Av. Coral, Av. Sol Nuevo 34, Sur Playa, 63724 Los Ayala, Nay."
-                            data-link="https://www.google.com/maps/place/Santa+Martha+Bungalows/@21.0253745,-105.2884714,17z/data=!4m9!3m8!1s0x84212595fa4dd385:0x3155de380bb5bed5!5m2!4m1!1i2!8m2!3d21.0253745!4d-105.2858965!16s%2Fg%2F11rq8dl_wh?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                            data-link="https://www.google.com/maps/place/Akan+Resort/@21.0260812,-105.2875193,17z/data=!4m10!3m9!1s0x84212467f8a08fff:0x9c4d113bf625bdb0!5m3!1s2026-01-29!4m1!1i2!8m2!3d21.0260812!4d-105.2849444!16s%2Fg%2F1hg41nf59?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
                             <i class="fas fa-map-marker-alt"></i> Ubicación
                         </button>
                         <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (311) 980 0639">
                             <i class="fas fa-phone"></i> Llamar
                         </button>
                         <button class="btn-info btn-precio" data-title="Rango de Precios"
-                            data-info="Desde aprox. MXN $2,875–3,000 por noche (plan con desayuno para 4 personas).">
+                            data-info="Medio (según temporada)." data-booking-link="https://santamarthabungalows.com/">
                             <i class="fas fa-bed"></i> Precio
                         </button>
                     </div>
@@ -1044,51 +1101,54 @@
 
             <article class="hotel-card" data-category="hoteles">
                 <div class="card-image">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/ca/8e/31/pool.jpg?w=1200&h=-1&s=1"
-                        alt="Rincón Resort">
+                    <img src="https://scontent.fgdl2-2.fna.fbcdn.net/v/t39.30808-6/473999178_631213976083986_4979384832747498976_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=3GDArG1s3skQ7kNvwFfx2KA&_nc_oc=Adkb3Nf5FYJ5UJtR7i4fGLIIBOaVxH4y6gU_xjKYf1JFZZxZ5G0Oc1HCir8NxM6vTljQkk20avYnFPV6UyeQJSQk&_nc_zt=23&_nc_ht=scontent.fgdl2-2.fna&_nc_gid=psVkXegoZDDPEpJJtxon3w&oh=00_Afo9n24jEiWhFjHGSMBMHzyNq8_-vdDJFj0WzIVsk33LkA&oe=69731003"
+                        alt="MALAKI RESORT">
                 </div>
                 <div class="card-content">
-                    <h3 class="hotel-title">Rincón Resort</h3>
-                    <p class="hotel-description">Hotel con muy buena reputación en la zona, a poca distancia de playa y
-                        con piscina. Ideal para estadías familiares o en pareja.</p>
-                    <div class="card-footer has-precio">
-                        <button class="btn-info btn-direccion" data-title="Rincón Resort"
-                            data-info="Bahía de Jaltemba 6 Norte, Fraccionamiento Sol Nuevo, 63726 Los Ayala, Nay."
-                            data-link="https://www.google.com/maps/place/Rinc%C3%B3n+Resort/@21.026527,-105.2854929,17z/data=!4m10!3m9!1s0x84212444bba92755:0x3fc8b3fe20be5352!5m3!1s2026-01-29!4m1!1i2!8m2!3d21.026527!4d-105.282918!16s%2Fg%2F11c71pq9r_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
-                            <i class="fas fa-map-marker-alt"></i> Ubicación
-                        </button>
-                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 3819">
-                            <i class="fas fa-phone"></i> Llamar
-                        </button>
-                        <button class="btn-info btn-precio" data-title="Rango de Precios"
-                            data-info="Medio (según temporada).">
-                            <i class="fas fa-bed"></i> Precio
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="hotel-card" data-category="hoteles">
-                <div class="card-image">
-                    <img src="https://i.pinimg.com/originals/e5/23/9f/e5239f8d5b1e5a5a5e5a5a5a5a5a5a5a.jpg"
-                        alt="Akan Resort">
-                </div>
-                <div class="card-content">
-                    <h3 class="hotel-title">Akan Resort</h3>
-                    <p class="hotel-description">Hotel bien valorado con ubicación cerca de la playa y servicios
-                        completos; opción recomendada si quieres comodidad y cercanía a restaurantes y tiendas locales.
+                    <h3 class="hotel-title">MALAKI RESORT</h3>
+                    <p class="hotel-description">Hotel con piscina al aire libre, wifi gratis y
+                        habitaciones confortables con baño privado y balcón o terraza.
                     </p>
                     <div class="card-footer has-precio">
-                        <button class="btn-info btn-direccion" data-title="Akan Resort"
-                            data-info="Av. Del Coral 27-A, 63724 Los Ayala, Nay."
+                        <button class="btn-info btn-direccion" data-title="MALAKI RESORT"
+                            data-info="Av. Bahia de Banderas 16, 63724 Los Ayala, Nay."
                             data-link="https://www.google.com/maps/place/Akan+Resort/@21.0260812,-105.2875193,17z/data=!4m10!3m9!1s0x84212467f8a08fff:0x9c4d113bf625bdb0!5m3!1s2026-01-29!4m1!1i2!8m2!3d21.0260812!4d-105.2849444!16s%2Fg%2F1hg41nf59?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D">
                             <i class="fas fa-map-marker-alt"></i> Ubicación
                         </button>
-                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 274 3196">
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: (327) 688 3392">
                             <i class="fas fa-phone"></i> Llamar
                         </button>
                         <button class="btn-info btn-precio" data-title="Rango de Precios"
-                            data-info="Medio (según temporada).">
+                            data-info="Desde aprox. MXN $1,500 – $1,800 MXN">
+                            <i class="fas fa-bed"></i> Precio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hotel-card" data-category="posada">
+                <div class="card-image">
+                    <img src="https://a0.muscache.com/im/pictures/dfcc862a-2d23-4ffd-9137-988bd76b95bf.jpg"
+                        alt="Posada Las Flores">
+                </div>
+                <div class="card-content">
+                    <h3 class="hotel-title">Posada Las Flores</h3>
+                    <p class="hotel-description">Posada estilo familiar/pintoresca con decoración simple y ambiente
+                        acogedor. Cuenta con café/restaurante en el sitio, área de palapa y asador, wifi y
+                        estacionamiento.
+                    </p>
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Posada Las Flores"
+                            data-info="C. Jaibas 7, 63724 Los Ayala, Nay."
+                            data-link="https://www.google.com/maps/place/Posada+Las+Flores/@21.0233891,-105.2916397,17z/data=!3m1!4b1!4m9!3m8!1s0x8421245d665f0a9d:0x8c661f4a1c0f8efd!5m2!4m1!1i2!8m2!3d21.0233891!4d-105.2890648!16s%2Fg%2F11bbrmmy88?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación
+                        </button>
+                        <button class="btn-info btn-contacto" data-title="Contacto" data-info="Tel: 33 1744 6139">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios"
+                            data-info="Desde aprox. MXN $800 – $1,300"
+                            data-booking-link="https://www.hotelposadalasflores.com/es/">
                             <i class="fas fa-bed"></i> Precio
                         </button>
                     </div>
@@ -1114,8 +1174,8 @@
                 <div class="filter-option" data-filter="hoteles">
                     <i class="fas fa-hotel"></i> Hoteles
                 </div>
-                <div class="filter-option" data-filter="rvparks">
-                    <i class="fas fa-caravan"></i> RV Parks
+                <div class="filter-option" data-filter="posada">
+                    <i class="fas fa-building"></i> Posadas
                 </div>
             </div>
         </div>
@@ -1185,12 +1245,6 @@
                         <i class="fas fa-briefcase"></i>
                     </span>
                     Operadores Turísticos
-                </a>
-                <a href="eventos-temporada-ayala.html" class="menu-item">
-                    <span class="menu-item-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </span>
-                    Eventos de Temporada
                 </a>
             </nav>
         </div>

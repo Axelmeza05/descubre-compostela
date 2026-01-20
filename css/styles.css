@@ -89,9 +89,9 @@ h3 {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 500px;
+    max-width: 800px;
     padding: 0 20px;
-    padding-top: 100px;
+    padding-top: 200px;
     /* Ajusta este valor para subir o bajar más el logo */
     z-index: 2;
     /* Asegura que el texto quede sobre el fondo */
