@@ -15,7 +15,7 @@ const locations = [
     //CHACALILLA
     {
         id: 'chacala',
-        name: 'Chacalilla',
+        name: 'Chacala',
         x: 28,
         y: 42.5,
         url: 'locations/Chacala/chacala.html',
