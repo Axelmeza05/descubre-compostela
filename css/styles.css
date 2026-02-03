@@ -164,7 +164,7 @@ h3 {
 
 @media (max-width: 768px) {
     .hero-logo-title {
-        width: 100%;
+        width: 150%;
         margin-bottom: 1rem;
     }
 }
