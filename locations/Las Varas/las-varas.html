@@ -443,11 +443,19 @@
             text-align: center;
             color: var(--white);
             /* FOTO: Las Varas / Entrada / Paisaje Agrícola */
-            background: linear-gradient(rgba(21, 128, 61, 0.3), rgba(0, 0, 0, 0.5)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Las_Varas_Nayarit_Entrance.jpg/1200px-Las_Varas_Nayarit_Entrance.jpg');
+            background: linear-gradient(rgba(21, 128, 61, 0.3), rgba(0, 0, 0, 0.5)), url('../../images/fondo-lasvaras.jpg');
             /* Nota: Si la imagen de arriba no carga, usa una local tuya de Las Varas */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+        }
+
+        .hero-logo {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1.2rem auto;
+            display: block;
         }
 
         .hero-content {
@@ -840,13 +848,17 @@
         </a>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="hero">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <h1>Las Varas</h1>
-            <p>Corazón Agrícola y Puerta a la Costa</p>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down fa-2x"></i>
+
+            <!-- LOGO -->
+            <img src="../../images/title-lasvaras.png" alt="Logo Las Varas" class="hero-logo">
+
+            <!-- Subtítulo -->
+            <p class="hero-subtitle">
+                Corazón agricola y puerta a la costa
+            </p>
+
         </div>
     </header>
 

@@ -149,6 +149,14 @@
             background-attachment: fixed;
         }
 
+        .hero-logo {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1.2rem auto;
+            display: block;
+        }
+
         .hero-content {
             z-index: 2;
             padding: 0 20px;
@@ -538,13 +546,17 @@
         </a>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="hero">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <h1>Playa Las Tortugas</h1>
-            <p>El Santuario Escondido de Nayarit</p>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down fa-2x"></i>
+
+            <!-- LOGO -->
+            <img src="../../images/title-lastortugas.png" alt="Logo Playa Las Tortugas" class="hero-logo">
+
+            <!-- Subtítulo -->
+            <p class="hero-subtitle">
+                El santuario escondido del Municipio de Compostela
+            </p>
+
         </div>
     </header>
 
