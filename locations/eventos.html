@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos | Municipio de Compostela</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --primary-color: #d35400;
@@ -390,16 +389,10 @@
     <main class="events-grid-container" id="events-container">
     </main>
 
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
 
-            // 1. CONFIGURACIÓN SUPABASE
-            const supabaseUrl = 'https://rlkpwxonuxnieqrypnct.supabase.co';
-            const supabaseKey = 'sb_publishable_KpWvv6ec6_hg-1HFpEyZEw_9QlDxne2';
-            const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-            // 2. VARIABLES DE ESTADO
+            // 1. VARIABLES DE ESTADO
             let todosLosEventos = [];
             const hoy = new Date();
             let fechaActual = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
@@ -407,14 +400,14 @@
             const nombresMeses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
                 "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
 
-            // 3. REFERENCIAS DOM
+            // 2. REFERENCIAS DOM
             const container = document.getElementById('events-container');
             const locationSelect = document.getElementById('location-select');
             const monthDisplay = document.getElementById('current-month-display');
             const btnPrev = document.getElementById('prev-month');
             const btnNext = document.getElementById('next-month');
 
-            // 4. FUNCIÓN PARA VERIFICAR SI ES HOY
+            // 3. FUNCIÓN PARA VERIFICAR SI ES HOY
             function esEventoHoy(fechaEvento) {
                 const hoy = new Date();
                 const hoyNormalizado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
@@ -424,7 +417,7 @@
                 return hoyNormalizado.getTime() === eventoNormalizado.getTime();
             }
 
-            // 5. FUNCIÓN: Verificar si el evento ya pasó
+            // 4. FUNCIÓN: Verificar si el evento ya pasó
             function eventoYaPaso(fechaEvento) {
                 const hoy = new Date();
                 const hoyNormalizado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
@@ -434,26 +427,19 @@
                 return eventoNormalizado.getTime() < hoyNormalizado.getTime();
             }
 
-            // 6. CARGA INICIAL
+            // 5. CARGA INICIAL
             async function fetchEvents() {
-                const { data: eventos, error } = await _supabase
-                    .from('eventos')
-                    .select('*')
-                    .gte('fecha', '2026-01-01')
-                    .lte('fecha', '2026-12-31')
-                    .order('fecha', { ascending: true });
-
-                if (error) {
-                    console.error('Error Supabase:', error);
+                const resp = await fetch(`/api/events?from=2026-01-01&to=2026-12-31`);
+                if (!resp.ok) {
+                    console.error('Error al cargar eventos', resp.statusText);
                     container.innerHTML = '<p>Error cargando agenda.</p>';
                     return;
                 }
-
-                todosLosEventos = eventos;
+                todosLosEventos = await resp.json();
                 actualizarVista();
             }
 
-            // 7. FILTRADO Y ACTUALIZACIÓN
+            // 6. FILTRADO Y ACTUALIZACIÓN
             function actualizarVista() {
                 const mesIndex = fechaActual.getMonth();
                 const anio = fechaActual.getFullYear();
@@ -485,7 +471,7 @@
                 renderizarTarjetas(eventosFiltrados);
             }
 
-            // 8. RENDERIZADO (MODIFICADO CON BOTÓN DE UBICACIÓN)
+            // 7. RENDERIZADO (MODIFICADO CON BOTÓN DE UBICACIÓN)
             function renderizarTarjetas(lista) {
                 container.innerHTML = '';
 
@@ -553,7 +539,7 @@
                 });
             }
 
-            // 9. EVENT LISTENERS
+            // 8. EVENT LISTENERS
             locationSelect.addEventListener('change', actualizarVista);
 
             btnPrev.addEventListener('click', () => {
