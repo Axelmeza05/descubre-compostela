@@ -1,214 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- HOME -->
   <url>
     <loc>https://compostelacercadeti.mx/</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-03-18</lastmod>
+    <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Chacala/atractivos-turisticos-chacala.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Chacala/chacala.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Chacala/eventos-temporada-chacala.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Chacala/gastronomia-chacala.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Chacala/hospedajes-chacala.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/andador-cafetero.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/atractivos-turisticos-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/destinos-cercanos-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/eventos-temporada-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/gastronomia-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/hospedajes-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Compostela/operadores-turisticos-compostela.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- EVENTOS GENERAL -->
   <url>
     <loc>https://compostelacercadeti.mx/locations/eventos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <lastmod>2026-03-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- CHACALA -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/chacala/chacala.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/chacala/atractivos-turisticos-chacala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/atractivos-turisticos-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/chacala/gastronomia-chacala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/eventos-temporada-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/chacala/hospedajes-chacala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/gastronomia-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/chacala/eventos-temporada-chacala.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- COMPOSTELA -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/compostela/compostela.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/compostela/atractivos-turisticos-compostela.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/compostela/gastronomia-compostela.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/hospedajes-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/compostela/hospedajes-compostela.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/isla-coral.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/compostela/eventos-temporada-compostela.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/operadores-turisticos-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/compostela/destinos-cercanos-compostela.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/compostela/operadores-turisticos-compostela.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/compostela/andador-cafetero.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- GUAYABITOS -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/guayabitos.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/atractivos-turisticos-guayabitos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Guayabitos/vida-nocturna-guayabitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/gastronomia-guayabitos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/atractivos-turisticos-penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/hospedajes-guayabitos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/eventos-temporada-penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/eventos-temporada-guayabitos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/gastronomia-penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/isla-coral.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/vida-nocturna-guayabitos.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/guayabitos/operadores-turisticos-guayabitos.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- LA PEÑITA -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/penita.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/atractivos-turisticos-penita.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/hospedajes-penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/gastronomia-penita.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/operadores-turisticos-penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/hospedajes-penita.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/La Peñita/penita.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/eventos-temporada-penita.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Las Varas/las-varas.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/la-penita/operadores-turisticos-penita.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- LOS AYALA -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/los-ayala.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/atractivos-turisticos-ayala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/atractivos-turisticos-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/gastronomia-ayala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/eventos-temporada-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/hospedajes-ayala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/gastronomia-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/eventos-temporada-ayala.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/hospedajes-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/los-ayala/operadores-turisticos-ayala.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- OTROS DESTINOS -->
+  <url>
+    <loc>https://compostelacercadeti.mx/locations/las-varas/las-varas.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/los-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/platanitos/platanitos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Los Ayala/operadores-turisticos-ayala.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/playa-chila/playa-chila.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/PLANTILLA.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/playa-del-toro/playa-del-toro.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Platanitos/platanitos.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/playa-las-tortugas/playa-las-tortugas.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://compostelacercadeti.mx/locations/Playa Chila/playa-chila.html</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://compostelacercadeti.mx/locations/zacualpan/zacualpan.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Playa del Toro/playa-del-toro.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Playa las Tortugas/playa-las-tortugas.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compostelacercadeti.mx/locations/Zacualpan/zacualpan.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.8</priority>
-  </url>
+
 </urlset>
