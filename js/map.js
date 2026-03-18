@@ -9,7 +9,7 @@ const locations = [
         name: 'Compostela',
         x: 70.5,
         y: 30,
-        url: 'locations/Compostela/compostela.html',
+        url: 'locations/compostela/compostela.html',
         important: true
     },
     //CHACALILLA
@@ -18,7 +18,7 @@ const locations = [
         name: 'Chacala',
         x: 28,
         y: 42.5,
-        url: 'locations/Chacala/chacala.html',
+        url: 'locations/chacala/chacala.html',
         important: true
     },
     // LA PEÑITA DE JALTEMBA
@@ -27,7 +27,7 @@ const locations = [
         name: 'La Peñita de Jaltemba',
         x: 30,
         y: 67.5,
-        url: 'locations/La Peñita/penita.html',
+        url: 'locations/la-peñita/penita.html',
         important: true
     },
     // RINCÓN DE GUAYABITOS
@@ -36,7 +36,7 @@ const locations = [
         name: 'Rincón de Guayabitos',
         x: 24.5,
         y: 77.5,
-        url: 'locations/Guayabitos/guayabitos.html',
+        url: 'locations/guayabitos/guayabitos.html',
         important: true
     },
     //LOS AYALA
@@ -45,7 +45,7 @@ const locations = [
         name: 'Los Ayala',
         x: 16.5,
         y: 81,
-        url: 'locations/Los Ayala/los-ayala.html',
+        url: 'locations/los-ayala/los-ayala.html',
         important: true
     },
     // LAS VARAS
@@ -54,7 +54,7 @@ const locations = [
         name: 'Las Varas',
         x: 39.5,
         y: 42.3,
-        url: 'locations/Las Varas/las-varas.html',
+        url: 'locations/las-varas/las-varas.html',
         important: true
     },
     //ZACUALPAN
@@ -63,7 +63,7 @@ const locations = [
         name: 'Zacualpan',
         x: 38,
         y: 26.3,
-        url: 'locations/Zacualpan/zacualpan.html',
+        url: 'locations/zacualpan/zacualpan.html',
         important: true
     },
     //PLATANITOS
@@ -72,7 +72,7 @@ const locations = [
         name: 'Platanitos',
         x: 26.3,
         y: 7,
-        url: 'locations/Platanitos/platanitos.html',
+        url: 'locations/platanitos/platanitos.html',
         important: true
     },
     //PLAYA LAS TORTUGAS
@@ -81,7 +81,7 @@ const locations = [
         name: 'Playa las Tortugas',
         x: 26.5,
         y: 16.5,
-        url: 'locations/Playa las Tortugas/playa-las-tortugas.html',
+        url: 'locations/playa-las-tortugas/playa-las-tortugas.html',
         important: true
     },
     //PLAYA CHILA
@@ -90,7 +90,7 @@ const locations = [
         name: 'Playa Chila',
         x: 27.7,
         y: 27,
-        url: 'locations/Playa Chila/playa-chila.html',
+        url: 'locations/playa-chila/playa-chila.html',
         important: true
     },
     // ISLA DEL CORAL
@@ -99,7 +99,7 @@ const locations = [
         name: 'Isla del Coral',
         x: 20.5,
         y: 65.5,
-        url: 'locations/Guayabitos/isla-coral.html',
+        url: 'locations/guayabitos/isla-coral.html',
         important: true
     },
     //PLAYA DEL TORO
@@ -108,7 +108,7 @@ const locations = [
         name: 'Playa del Toro',
         x: 15.5,
         y: 71.5,
-        url: 'locations/Playa del Toro/playa-del-toro.html',
+        url: 'locations/playa-del-toro/playa-del-toro.html',
         important: true
     }
 
