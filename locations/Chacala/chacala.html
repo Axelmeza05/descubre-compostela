@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chacala y Chacalilla, Nayarit. Playas vírgenes, villas de lujo y un pueblo pesquero con encanto en la Riviera Nayarit.">
     <title>Chacalilla y Chacala | Compostela</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,823 +22,53 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
     <link rel="manifest" href="../../site.webmanifest">
 
+    <link rel="stylesheet" href="../../css/styles.css">
+
     <style>
-        /* --- VARIABLES Y RESET (Paleta Chacalilla: Lujo Natural y Selva) --- */
+        /* --- Paleta Chacalilla: Lujo Natural y Selva --- */
         :root {
-            /* Verde Esmeralda Oscuro (Selva/Lujo) */
             --primary: #064e3b;
-            /* Verde Jade (Mar tranquilo) */
             --primary-light: #22d3ee;
-            /* Dorado (Villas/Exclusividad) */
             --accent: #d4af37;
-            /* Bronce */
             --accent-hover: #b45309;
-            /* Texto Verde Muy Oscuro */
             --text-dark: #022c22;
-            /* Gris Verdoso */
             --text-light: #374151;
-            /* Fondo Crema/Marfil */
             --bg-light: #fdfbf7;
-            --white: #ffffff;
-
-            /* Gradiente "Exclusive Bay" */
             --gradient-sunset: linear-gradient(135deg, #064e3b 0%, #047857 100%);
-
-            /* Fondo Iconos */
             --icon-bg: #d1fae5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* --- NAVEGACIÓN --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            z-index: 1000;
-            transition: all 0.4s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 1rem 5%;
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar.scrolled .nav-logo {
-            color: var(--primary);
-            text-shadow: none;
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.25);
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 2px solid transparent;
-            backdrop-filter: blur(5px);
-        }
-
-        .back-btn:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .navbar.scrolled .back-btn {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .navbar.scrolled .back-btn:hover {
-            background: var(--primary-light);
-        }
-
-        /* ========================================================
-           MENÚ FLOTANTE (ESTILO PASTILLA)
-           ======================================================== */
-        .floating-nav-container {
-            position: fixed;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 1500;
-            pointer-events: none;
-            transition: bottom 0.1s ease-out;
-        }
-
-        .floating-nav-container.stopped {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            bottom: auto;
-        }
-
-        .floating-nav {
-            pointer-events: auto;
-            background-color: rgba(30, 41, 59, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 5px 25px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-pill-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #cbd5e1;
-            transition: all 0.3s ease;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px 10px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .nav-pill-btn:hover {
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        .pill-icon {
-            font-size: 1.2rem;
-            margin-bottom: 2px;
-        }
-
-        .pill-text {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .main-btn {
-            position: relative;
-            top: -15px;
-        }
-
-        .pill-icon-main {
-            background: linear-gradient(135deg, #0891b2, var(--primary-light));
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.4);
-            border: 4px solid #1e293b;
-            transition: all 0.3s ease;
-        }
-
-        .main-btn:hover .pill-icon-main {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.6);
-        }
-
-        .pill-text-main {
-            margin-top: 5px;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        /* =============
-           MENÚ OVERLAY 
-           ============== */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .menu-content {
-            background: transparent;
-            border-radius: 20px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 500px;
-            max-height: 85vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            /* Ocultar scrollbar pero mantener funcionalidad */
-            scrollbar-width: thin;
-            scrollbar-color: transparent transparent;
-        }
-
-        .menu-overlay.active .menu-content {
-            transform: scale(1);
-        }
-
-        .menu-header {
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: none;
-        }
-
-        .menu-title-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .menu-close {
-            position: absolute;
-            top: -5px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .menu-close:hover {
-            transform: rotate(90deg);
-            color: white;
-        }
-
-        .menu-close:active {
-            transform: rotate(90deg) scale(0.9);
-        }
-
-        .menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .menu-item {
-            background: transparent;
-            padding: 1.2rem 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            cursor: pointer;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            /* Mejoras para táctil */
-            min-height: 60px;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-            position: relative;
-        }
-
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: white;
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .menu-item:active {
-            transform: translateX(5px) scale(0.98);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .menu-item-icon {
-            font-size: 1.5rem;
-            color: var(--primary-light, #FF8C42);
-            transition: all 0.3s;
-            flex-shrink: 0;
-            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
-        }
-
-        .menu-item:hover .menu-item-icon {
-            transform: scale(1.2);
-        }
-
-        .menu-item:active .menu-item-icon {
-            transform: scale(1.1);
-        }
-
-        /* Scrollbar personalizada */
-        .menu-content::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .menu-content::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .menu-content::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-        }
-
-        .menu-content::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu-content {
-                width: 95%;
-                padding: 1.5rem;
-            }
-
-            .menu-title-text {
-                font-size: 1.5rem;
-            }
-
-            .menu-item {
-                font-size: 1rem;
-                padding: 1.3rem 1.2rem;
-                min-height: 65px;
-                gap: 12px;
-            }
-
-            .menu-item-icon {
-                font-size: 1.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .menu-item {
-                padding: 1.4rem 1rem;
-                min-height: 70px;
-            }
-        }
-
-        /* --- HERO SECTION --- */
+        /* Hero unico de Chacala */
         .hero {
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            /* FOTO: Vista de bahía privada o villas */
-            background: linear-gradient(rgba(0, 40, 30, 0.4), rgba(0, 20, 10, 0.5)), url('../../images/chacala/chacala1.JPG');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero-logo {
-            max-width: 500px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 1.2rem auto;
-            display: block;
-        }
-
-
-        .hero-content {
-            z-index: 2;
-            padding: 0 20px;
+            background-image: linear-gradient(rgba(0, 40, 30, 0.4), rgba(0, 20, 10, 0.5)),
+                url('../../images/chacala/chacala1.JPG');
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
-            /* Gradiente de texto: Blanco a Dorado */
             background: -webkit-linear-gradient(#fff, #fde047);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* --- CONTENEDORES Y SECCIONES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        /* --- INTRO SECTION --- */
-        .intro-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .intro-text p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .intro-image {
-            position: relative;
-        }
-
-        .intro-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 20px 20px 0 var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        .intro-image:hover img {
-            transform: scale(1.02);
-        }
-
-        /* --- CARDS GENERALES --- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 4px solid transparent;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(6, 78, 59, 0.15);
-            border-bottom-color: var(--accent);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            background: var(--icon-bg);
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        /* --- GALERÍA --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding-bottom: 2rem;
-        }
-
-        .gallery-item {
-            height: 250px;
-            overflow: hidden;
-            border-radius: 12px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            /* Gradiente Verde Oscuro */
-            background: linear-gradient(transparent, rgba(6, 78, 59, 0.85));
-            color: white;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .overlay {
-            opacity: 1;
-        }
-
-        /* --- SECCIÓN TIPS --- */
-        .food-card {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .food-icon {
-            font-size: 1.2rem;
-            color: var(--primary);
-            background: var(--icon-bg);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        /* --- INFO PRACTICA --- */
-        .info-section {
-            background: var(--gradient-sunset);
-            color: white;
-            padding: 4rem 0;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-
+        /* Info icons dorados */
         .info-item i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
             color: #d4af37;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .info-item h4 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
-
-        .info-item p {
-            font-size: 0.9rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        /* --- FOOTER & CTA --- */
+        /* CTA y footer verde oscuro */
         .cta-box {
             background: linear-gradient(135deg, #064e3b, #022c22);
-            border-radius: 20px;
-            padding: 4rem;
-            text-align: center;
-            color: white;
-            margin-top: -50px;
-            position: relative;
             box-shadow: 0 20px 50px rgba(6, 78, 59, 0.3);
-        }
-
-        .btn-large {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 3rem;
-            background: white;
-            color: var(--primary);
-            font-weight: 800;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-large:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            background-color: var(--icon-bg);
         }
 
         footer {
             background: #022c22;
-            /* Casi negro verdoso */
-            color: var(--white);
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .intro-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .intro-image img {
-                box-shadow: 10px 10px 0 var(--accent);
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* =====================================================
-   AJUSTE DEFINITIVO DE BACKGROUND PARA MÓVILES
-   (Hero y secciones con background-image)
-   ===================================================== */
-
-        @media (max-width: 768px) {
-
-            /* HERO */
-            .hero {
-                background-attachment: scroll !important;
-                background-size: cover !important;
-                background-position: center top !important;
-                background-repeat: no-repeat;
-                min-height: 100svh;
-                /* Solución correcta para móviles */
-            }
-
-            /* Ajustes visuales del contenido */
-            .hero-content {
-                padding: 0 15px;
-            }
-
-            .hero-logo {
-                max-width: 280px;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            /* CUALQUIER SECCIÓN CON BACKGROUND */
-            section[style*="background-image"],
-            .section-bg {
-                background-attachment: scroll !important;
-                background-size: cover !important;
-                background-position: center top !important;
-                background-repeat: no-repeat;
-            }
-        }
-
-        /* Extra ajuste para pantallas muy pequeñas */
-        @media (max-width: 480px) {
-
-            .hero {
-                background-position: center 20% !important;
-            }
+        /* Gallery overlay verde */
+        .gallery-item .overlay {
+            background: linear-gradient(transparent, rgba(6, 78, 59, 0.85));
         }
     </style>
 </head>
@@ -936,7 +167,7 @@
                         con la naturaleza sin sacrificar la comodidad.</p>
                 </div>
                 <div class="intro-image" data-aos="fade-left">
-                    <img src="../../images/chacala/chacala7.jpg" alt="Vista Aérea Chacalilla">
+                    <img loading="lazy" src="../../images/chacala/chacala7.jpg" alt="Vista Aérea Chacalilla">
                 </div>
             </div>
         </div>
@@ -949,19 +180,19 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="../../images/chacala/chacala5.JPG" alt="Playa Chacala">
+                    <img loading="lazy" src="../../images/chacala/chacala5.JPG" alt="Playa Chacala">
                     <div class="overlay">Playa Chacala</div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="../../images/chacala/chacala9.png" alt="Villas Privadas">
+                    <img loading="lazy" src="../../images/chacala/chacala9.png" alt="Villas Privadas">
                     <div class="overlay">Villas de Lujo</div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="../../images/chacala/chacala10.png" alt="Playa Chacalilla">
+                    <img loading="lazy" src="../../images/chacala/chacala10.png" alt="Playa Chacalilla">
                     <div class="overlay">Bahía Chacalilla</div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="../../images/chacala/chacala11.jpg" alt="Playa Las Cuevas">
+                    <img loading="lazy" src="../../images/chacala/chacala11.jpg" alt="Playa Las Cuevas">
                     <div class="overlay">Playa Las Cuevas</div>
                 </div>
             </div>
@@ -1048,7 +279,7 @@
                     </div>
                 </div>
                 <div style="position: relative;" data-aos="fade-left">
-                    <img src="../../images/chacala/chacala6.jpg"
+                    <img loading="lazy" src="../../images/chacala/chacala6.jpg"
                         style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(6, 78, 59, 0.2);"
                         alt="Gastronomía en Chacala">
                 </div>
@@ -1101,7 +332,7 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h3>Chacalilla</h3>
+                    <h3>Chacala</h3>
                     <p style="opacity: 0.7;">Municipio de Compostela, Nayarit.</p>
                     <div style="text-align: center; margin-top: 3rem; opacity: 0.5; font-size: 0.8rem;">
                         &copy; 2026 Turismo Compostela.
@@ -1110,93 +341,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Inicializar animaciones AOS
-        AOS.init({
-            once: true,
-            offset: 100,
-            duration: 800,
-            easing: 'ease-out-cubic'
-        });
-
-        // Efecto Sticky Navbar
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // --- Función para el Menú Overlay (ESTILO GASTRONOMÍA) ---
-        function toggleOverlayMenu() {
-            const overlay = document.getElementById('menu-overlay');
-            if (overlay) {
-                overlay.classList.toggle('active');
-                // Evitar scroll de fondo cuando el menú está abierto
-                if (overlay.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }
-        }
-
-        // Cerrar menú con botón X y lógica del menú flotante
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnClose = document.getElementById('btn-menu-close');
-            const menuOverlay = document.getElementById('menu-overlay');
-
-            if (btnClose && menuOverlay) {
-                btnClose.addEventListener('click', () => {
-                    menuOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-
-            // --- Lógica del Menú Flotante (Sticky al estilo Gastronomía) ---
-            const footer = document.querySelector('footer');
-            const floatingNav = document.querySelector('.floating-nav-container');
-
-            function handleNavScroll() {
-                if (!footer || !floatingNav) return;
-
-                const scrollY = window.scrollY;
-                const windowHeight = window.innerHeight;
-                const scrollBottom = scrollY + windowHeight;
-                const footerTop = footer.offsetTop;
-                const stopMargin = 30;
-
-                if (scrollBottom > footerTop + stopMargin) {
-                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
-                    floatingNav.classList.add('stopped');
-                    floatingNav.style.position = 'absolute';
-                    floatingNav.style.top = `${absoluteTop}px`;
-                    floatingNav.style.bottom = 'auto';
-                } else {
-                    floatingNav.classList.remove('stopped');
-                    floatingNav.style.position = 'fixed';
-                    floatingNav.style.top = 'auto';
-                    floatingNav.style.bottom = '30px';
-                }
-            }
-
-            window.addEventListener('scroll', handleNavScroll);
-            window.addEventListener('resize', handleNavScroll);
-            handleNavScroll(); // Inicializar
-
-            // Scroll suave
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="../../js/main.js"></script>
 </body>
 
 </html>

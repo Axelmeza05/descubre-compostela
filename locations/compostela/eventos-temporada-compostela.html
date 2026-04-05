@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eventos y fiestas en Compostela, Nayarit. Calendario de festividades, ferias y celebraciones del Pueblo Mágico durante todo el año.">
     <title>Eventos de Temporada | Compostela Pueblo Mágico</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -1082,7 +1083,7 @@
                     <span class="month-badge">
                         <i class="fas fa-calendar"></i> Marzo
                     </span>
-                    <img src="../../images/compostela/ev-romeriaseñorial.jpg" alt="Romería Señorial Compostela">
+                    <img loading="lazy" src="../../images/compostela/ev-romeriaseñorial.jpg" alt="Romería Señorial Compostela">
                 </div>
                 <div class="card-content">
                     <h3 class="event-title">Romería Señorial Compostela</h3>
@@ -1097,7 +1098,7 @@
                     <span class="month-badge">
                         <i class="fas fa-calendar"></i> Julio
                     </span>
-                    <img src="../../images/compostela/ev-fiestapatronal.JPG"
+                    <img loading="lazy" src="../../images/compostela/ev-fiestapatronal.JPG"
                         alt="Aniversario de la Fundación y Fiestas Patronales de Santiago Apóstol">
                 </div>
                 <div class="card-content">
@@ -1115,7 +1116,7 @@
                     <span class="month-badge">
                         <i class="fas fa-calendar"></i> Noviembre
                     </span>
-                    <img src="https://noticiasleon.com.mx/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-02-at-3.45.42-PM.jpeg"
+                    <img loading="lazy" src="https://noticiasleon.com.mx/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-02-at-3.45.42-PM.jpeg"
                         alt="Expo Feria Agrícola Ganadera Compostela">
                 </div>
                 <div class="card-content">
@@ -1132,7 +1133,7 @@
                     <span class="month-badge">
                         <i class="fas fa-calendar"></i> Noviembre
                     </span>
-                    <img src="../../images/compostela/ev-misericordia.jpg"
+                    <img loading="lazy" src="../../images/compostela/ev-misericordia.jpg"
                         alt="Fiestas Juradas al Señor de la Misericordia">
                 </div>
                 <div class="card-content">
@@ -1243,198 +1244,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const floatingNav = document.querySelector('.floating-nav-container');
-
-            function hideFloatingNav() {
-                if (floatingNav) {
-                    floatingNav.classList.add('hidden-by-overlay');
-                }
-            }
-
-            function showFloatingNav() {
-                if (floatingNav) {
-                    floatingNav.classList.remove('hidden-by-overlay');
-                }
-            }
-
-
-            // --- 1. MODAL DE FILTROS ---
-            const btnFilter = document.getElementById('btn-filter');
-            const filterModal = document.getElementById('filter-modal');
-            const closeFilterModal = document.getElementById('close-filter-modal');
-            const filterOptions = document.querySelectorAll('.filter-option');
-            const eventCards = document.querySelectorAll('.event-card');
-
-            // Abrir modal de filtros
-            btnFilter.addEventListener('click', () => {
-                filterModal.classList.add('active');
-                hideFloatingNav();
-                document.body.style.overflow = 'hidden';
-            });
-
-
-            // Cerrar modal de filtros
-            closeFilterModal.addEventListener('click', () => {
-                filterModal.classList.remove('active');
-                showFloatingNav();
-                document.body.style.overflow = '';
-            });
-
-
-            // Cerrar al hacer click fuera del contenido
-            filterModal.addEventListener('click', (e) => {
-                if (e.target === filterModal) {
-                    filterModal.classList.remove('active');
-                    showFloatingNav();
-                    document.body.style.overflow = '';
-                }
-            });
-
-
-            // --- 2. FILTRADO DE CATEGORÍAS ---
-            filterOptions.forEach(option => {
-                option.addEventListener('click', function () {
-                    const filterValue = this.getAttribute('data-filter');
-
-                    // Actualizar clases activas
-                    filterOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Filtrar cards
-                    eventCards.forEach(card => {
-                        const cardCategory = card.getAttribute('data-category');
-
-                        if (filterValue === 'todos') {
-                            card.style.display = 'flex';
-                            card.classList.add('fade-in');
-                        } else if (cardCategory === filterValue) {
-                            card.style.display = 'flex';
-                            card.classList.add('fade-in');
-                        } else {
-                            card.style.display = 'none';
-                            card.classList.remove('fade-in');
-                        }
-                    });
-
-                    // Cerrar modal después de seleccionar
-                    filterModal.classList.remove('active');
-                    document.body.style.overflow = '';
-
-                    // Scroll suave al grid
-                    document.querySelector('.container-eventos').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    filterModal.classList.remove('active');
-                    showFloatingNav();
-                    document.body.style.overflow = '';
-
-                });
-
-            });
-
-            // --- 3. MODAL DE INFORMACIÓN ---
-            const modal = document.getElementById('info-modal');
-            const closeModal = document.querySelector('.close-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalInfo = document.getElementById('modal-info');
-            const modalIcon = document.getElementById('modal-icon');
-            const modalMapBtn = document.getElementById('modal-map-btn');
-
-            document.querySelectorAll('.btn-info').forEach(button => {
-                button.addEventListener('click', () => {
-                    const title = button.getAttribute('data-title');
-                    const info = button.getAttribute('data-info');
-                    const link = button.getAttribute('data-link');
-
-                    modalTitle.textContent = title;
-                    modalInfo.innerHTML = info;
-
-                    if (button.classList.contains('btn-mas-info')) {
-                        modalIcon.className = 'fas fa-info-circle';
-                        modalIcon.style.color = '#1e40af';
-                        modalMapBtn.classList.add('hidden');
-                    } else if (button.classList.contains('btn-ubicacion')) {
-                        modalIcon.className = 'fas fa-map-marker-alt';
-                        modalIcon.style.color = '#15803d';
-                        if (link) {
-                            modalMapBtn.href = link;
-                            modalMapBtn.classList.remove('hidden');
-                        } else {
-                            modalMapBtn.classList.add('hidden');
-                        }
-                    }
-
-                    modal.classList.add('active');
-                });
-            });
-
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-
-            // --- 4. MENÚ FLOTANTE ---
-            const btnMenu = document.getElementById('btn-menu-toggle');
-            const btnClose = document.getElementById('btn-menu-close');
-            const menuOverlay = document.getElementById('menu-overlay');
-
-            if (btnMenu && menuOverlay) {
-                btnMenu.addEventListener('click', () => {
-                    menuOverlay.classList.add('active');
-                    hideFloatingNav();
-                    document.body.style.overflow = 'hidden';
-                });
-
-            }
-
-            if (btnClose && menuOverlay) {
-                btnClose.addEventListener('click', () => {
-                    menuOverlay.classList.remove('active');
-                    showFloatingNav();
-                    document.body.style.overflow = '';
-                });
-
-            }
-
-            // --- 5. DETENER MENÚ FLOTANTE EN FOOTER ---
-            const footer = document.querySelector('footer');
-
-            function handleNavScroll() {
-                if (!footer || !floatingNav) return;
-
-                const scrollY = window.scrollY;
-                const windowHeight = window.innerHeight;
-                const scrollBottom = scrollY + windowHeight;
-                const footerTop = footer.offsetTop;
-                const stopMargin = 30;
-
-                if (scrollBottom > footerTop + stopMargin) {
-                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
-                    floatingNav.classList.add('stopped');
-                    floatingNav.style.position = 'absolute';
-                    floatingNav.style.top = `${absoluteTop}px`;
-                    floatingNav.style.bottom = 'auto';
-                } else {
-                    floatingNav.classList.remove('stopped');
-                    floatingNav.style.position = 'fixed';
-                    floatingNav.style.top = 'auto';
-                    floatingNav.style.bottom = '30px';
-                }
-            }
-
-            window.addEventListener('scroll', handleNavScroll);
-            window.addEventListener('resize', handleNavScroll);
-            handleNavScroll();
-
-        });
-    </script>
+    <script src="../../js/main.js"></script>
 </body>
 
 </html>

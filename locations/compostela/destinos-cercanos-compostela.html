@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Destinos cercanos a Compostela, Nayarit. Playas, pueblos y aventuras a pocos minutos del Pueblo Mágico en la Riviera Nayarit.">
     <title>Destinos Cercanos | Compostela Pueblo Mágico</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -984,7 +985,7 @@
             <!-- CANATLÁN -->
             <article class="destination-card" data-category="mazatan">
                 <div class="card-image">
-                    <img src="../../images/compostela/des-mazatan.jpg" alt="Mazatan">
+                    <img loading="lazy" src="../../images/compostela/des-mazatan.jpg" alt="Mazatan">
                 </div>
                 <div class="card-content">
                     <h3 class="destination-title">Mazatan</h3>
@@ -1019,7 +1020,7 @@
             <!-- NOMBRE DE DIOS -->
             <article class="destination-card" data-category="miravalle">
                 <div class="card-image">
-                    <img src="../../images/compostela/des-miravalle.jpg" alt="miravalle">
+                    <img loading="lazy" src="../../images/compostela/des-miravalle.jpg" alt="miravalle">
                 </div>
                 <div class="card-content">
                     <h3 class="destination-title">Miravalle</h3>
@@ -1061,7 +1062,7 @@
             <!-- Cumbres de Huicicila -->
             <article class="destination-card" data-category="cumbres-de-huicicila">
                 <div class="card-image">
-                    <img src="../../images/compostela/des-cumbreshuicicila.jpg" alt="Cumbres de Huicicila">
+                    <img loading="lazy" src="../../images/compostela/des-cumbreshuicicila.jpg" alt="Cumbres de Huicicila">
                 </div>
                 <div class="card-content">
                     <h3 class="destination-title">Cumbres de Huicicila</h3>
@@ -1182,130 +1183,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            const floatingNav = document.querySelector('.floating-nav-container');
-
-            /* ===============================
-               1. MODAL DE FILTROS
-               =============================== */
-            const btnFilter = document.getElementById('btn-filter');
-            const filterModal = document.getElementById('filter-modal');
-            const closeFilterModal = document.getElementById('close-filter-modal');
-            const filterOptions = document.querySelectorAll('.filter-option');
-            const destinationCards = document.querySelectorAll('.destination-card');
-
-            // Abrir modal de filtros
-            btnFilter.addEventListener('click', () => {
-                filterModal.classList.add('active');
-                floatingNav.classList.add('hidden-by-overlay'); // 👈 OCULTAR MENÚ
-                document.body.style.overflow = 'hidden';
-            });
-
-            // Cerrar modal de filtros (botón X)
-            closeFilterModal.addEventListener('click', () => {
-                filterModal.classList.remove('active');
-                floatingNav.classList.remove('hidden-by-overlay'); // 👈 MOSTRAR MENÚ
-                document.body.style.overflow = '';
-            });
-
-            // Cerrar modal al tocar el fondo oscuro
-            filterModal.addEventListener('click', (e) => {
-                if (e.target === filterModal) {
-                    filterModal.classList.remove('active');
-                    floatingNav.classList.remove('hidden-by-overlay'); // 👈 MOSTRAR MENÚ
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Selección de filtros
-            filterOptions.forEach(option => {
-                option.addEventListener('click', function () {
-                    const filterValue = this.dataset.filter;
-
-                    // Actualizar estado activo
-                    filterOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Filtrar destinos
-                    destinationCards.forEach(card => {
-                        const category = card.dataset.category;
-
-                        if (filterValue === 'todos' || category === filterValue) {
-                            card.style.display = 'flex';
-                            card.classList.add('fade-in');
-                        } else {
-                            card.style.display = 'none';
-                            card.classList.remove('fade-in');
-                        }
-                    });
-
-                    // Cerrar modal y mostrar menú flotante
-                    filterModal.classList.remove('active');
-                    floatingNav.classList.remove('hidden-by-overlay'); // 👈 MOSTRAR MENÚ
-                    document.body.style.overflow = '';
-
-                    // Scroll suave al grid
-                    document.querySelector('.container-destinos').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            /* ===============================
-               2. MENÚ OVERLAY (MENÚ PRINCIPAL)
-               =============================== */
-            const btnMenu = document.getElementById('btn-menu-toggle');
-            const btnCloseMenu = document.getElementById('btn-menu-close');
-            const menuOverlay = document.getElementById('menu-overlay');
-
-            // Abrir menú overlay
-            btnMenu.addEventListener('click', () => {
-                menuOverlay.classList.add('active');
-                floatingNav.classList.add('hidden-by-overlay'); // 👈 OCULTAR MENÚ
-                document.body.style.overflow = 'hidden';
-            });
-
-            // Cerrar menú overlay
-            btnCloseMenu.addEventListener('click', () => {
-                menuOverlay.classList.remove('active');
-                floatingNav.classList.remove('hidden-by-overlay'); // 👈 MOSTRAR MENÚ
-                document.body.style.overflow = '';
-            });
-
-            /* ===============================
-               3. DETENER MENÚ FLOTANTE EN FOOTER
-               =============================== */
-            const footer = document.querySelector('footer');
-
-            function handleNavScroll() {
-                if (!footer || !floatingNav) return;
-
-                const scrollBottom = window.scrollY + window.innerHeight;
-                const footerTop = footer.offsetTop;
-                const stopMargin = 30;
-
-                if (scrollBottom > footerTop + stopMargin) {
-                    const absoluteTop = footerTop - floatingNav.offsetHeight - stopMargin;
-                    floatingNav.classList.add('stopped');
-                    floatingNav.style.position = 'absolute';
-                    floatingNav.style.top = `${absoluteTop}px`;
-                    floatingNav.style.bottom = 'auto';
-                } else {
-                    floatingNav.classList.remove('stopped');
-                    floatingNav.style.position = 'fixed';
-                    floatingNav.style.top = 'auto';
-                    floatingNav.style.bottom = '30px';
-                }
-            }
-
-            window.addEventListener('scroll', handleNavScroll);
-            window.addEventListener('resize', handleNavScroll);
-            handleNavScroll();
-
-        });
-    </script>
+    <script src="../../js/main.js"></script>
 
 </body>
 
