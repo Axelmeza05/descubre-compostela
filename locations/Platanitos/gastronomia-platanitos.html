@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Restaurantes y comida en Los Ayala, Nayarit. Pescado zarandeado, mariscos frescos y palapas con vista al mar.">
+    <title>Gastronomía | Platanitos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+
+
+    <link rel="stylesheet" href="../../css/styles.css">
+
+    <style>
+        /* --- Paleta Los Ayala Gastronomia --- */
+        :root {
+            --primary: #0891b2;
+            --primary-light: #22d3ee;
+            --primary-dark: #0e7490;
+            --accent: #d97706;
+            --accent-light: #f59e0b;
+            --terracotta: #c2410c;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f0f9ff;
+        }
+
+        .hero-gastronomia {
+            background-image: url('../../images/platanitos/gastronomia-platanitos.png');
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar-chacala">
+        <div class="logo-container">
+            <h1 class="logo-text">
+                <span class="brand-main">PLATANITOS</span>
+                <span class="brand-slogan">cerca de ti</span>
+            </h1>
+        </div>
+        <a href="platanitos.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </nav>
+
+    <header class="hero-gastronomia">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Gastronomía</h1>
+                <p class="banner-subtitle">
+                    Descubre la deliciosa comida que hay en Platanitos
+                </p>
+            </div>
+
+            <button id="btn-filter" class="btn-filter" aria-label="Filtrar">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container-gastronomia">
+        <div class="restaurants-grid">
+
+            <article class="restaurant-card" data-category="mariscos">
+                <div class="card-image">
+                    <img loading="lazy" src="../../images/platanitos/gastronomia-deliciasmar.jpg"
+                        alt="Delicias del Mar">
+                </div>
+                <div class="card-content">
+                    <h3 class="restaurant-title">Delicias del Mar</h3>
+                    <p class="restaurant-description">Restaurante frente a la playa especializado en mariscadas, pescado
+                        y carne zarandeada.</p>
+
+                    <div class="card-footer has-precio">
+                        <button class="btn-info btn-direccion" data-title="Delicias del Mar"
+                            data-info="Corredor Platanitos número 18"
+                            data-link="https://www.google.com/maps/place/Restaurante+DELICIAS+DEL+MAR+RODRIGUESZ/@21.3522822,-105.242161,17z/data=!3m1!4b1!4m6!3m5!1s0x8420c5006d78cca7:0x187e410e17f91c00!8m2!3d21.3522772!4d-105.2395861!16s%2Fg%2F11mt4l8xvf?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="fas fa-map-marker-alt"></i> Dirección
+                        </button>
+                        <button class="btn-info btn-horario" data-title="Horario"
+                            data-info="08:00 – 17:00 todos los días.">
+                            <i class="fas fa-clock"></i> Horario
+                        </button>
+                        <button class="btn-info btn-precio" data-title="Rango de Precios" data-info="MX$200–300. p/p">
+                            <i class="fas fa-dollar-sign"></i> Precios
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <div id="filter-modal" class="filter-modal">
+        <div class="filter-modal-content">
+            <div class="filter-modal-header">
+                <h3>Tipo de Cocina</h3>
+                <button class="close-filter-modal" id="close-filter">×</button>
+            </div>
+
+            <div class="filter-options">
+                <div class="filter-option active" data-filter="all">
+                    <i class="fas fa-utensils"></i> Todos
+                </div>
+                <div class="filter-option" data-filter="mariscos">
+                    <i class="fas fa-fish"></i> Mariscos
+                </div>
+                <div class="filter-option" data-filter="mexicana">
+                    <i class="fas fa-pepper-hot"></i> Comida Mexicana
+                </div>
+                <div class="filter-option" data-filter="internacional">
+                    <i class="fas fa-globe-americas"></i> Internacional
+                </div>
+                <div class="filter-option" data-filter="snacks">
+                    <i class="fas fa-ice-cream"></i> Snacks
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-icon-header">
+                <i class="fas fa-info-circle" id="modal-icon"></i>
+            </div>
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-info">Información detallada...</p>
+
+            <a href="#" target="_blank" id="modal-map-btn" class="btn-maps hidden">
+                <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+            </a>
+
+            <a href="#" target="_blank" id="modal-menu-btn" class="btn-menu hidden">
+                <i class="fas fa-book-open"></i> Ver Menú Completo
+            </a>
+        </div>
+    </div>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav">
+            <button class="nav-pill-btn" onclick="window.location.href='../../index.html#mapa-section'">
+                <div class="pill-icon"><i class="fas fa-home"></i></div>
+                <span class="pill-text">INICIO</span>
+            </button>
+            <button class="nav-pill-btn main-btn" onclick="toggleOverlayMenu()">
+                <div class="pill-icon-main"><i class="fas fa-bars"></i></div>
+                <span class="pill-text-main">MENÚ</span>
+            </button>
+            <button class="nav-pill-btn" onclick="window.location.href='../eventos.html'">
+                <div class="pill-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="pill-text">EVENTOS</span>
+            </button>
+        </nav>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="btn-menu-close" class="menu-close">×</button>
+            <div class="menu-header">
+                <h2 class="menu-title-text">Explora Platanitos</h2>
+            </div>
+            <nav class="menu-list">
+                <a href="gastronomia-platanitos.html" class="menu-item">
+                    <span class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                    Gastronomía
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Turismo Compostela - Platanitos</p>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+
+</html>
