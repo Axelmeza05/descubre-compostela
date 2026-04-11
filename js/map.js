@@ -27,7 +27,7 @@ const locations = [
         name: 'La Peñita de Jaltemba',
         x: 30,
         y: 67.5,
-        url: 'locations/la-peñita/penita.html',
+        url: 'locations/la-penita/penita.html',
         important: true
     },
     // RINCÓN DE GUAYABITOS

@@ -17,7 +17,7 @@ External dependencies (AOS, Font Awesome, Google Fonts) are loaded from CDNs on 
 ### Page topology
 
 - [index.html](index.html) is the landing page. It is the **only** page that uses [js/map.js](js/map.js) and [css/index.css](css/index.css).
-- [locations/](locations/) contains one folder per destination (`compostela/`, `chacala/`, `guayabitos/`, `la-peñita/`, `los-ayala/`, `las-varas/`, `platanitos/`, `playa-chila/`, `playa-del-toro/`, `playa-las-tortugas/`, `zacualpan/`).
+- [locations/](locations/) contains one folder per destination (`compostela/`, `chacala/`, `guayabitos/`, `la-penita/`, `los-ayala/`, `las-varas/`, `platanitos/`, `playa-chila/`, `playa-del-toro/`, `playa-las-tortugas/`, `zacualpan/`).
 - Each destination folder has a main page (`<slug>.html`) and optional subpages following a fixed naming pattern: `atractivos-turisticos-<slug>.html`, `gastronomia-<slug>.html`, `hospedajes-<slug>.html`, `eventos-temporada-<slug>.html`, `operadores-turisticos-<slug>.html`. Guayabitos also has `vida-nocturna-guayabitos.html` and `isla-coral.html`.
 - [locations/eventos.html](locations/eventos.html) is the shared events landing page reachable from every floating nav.
 - Not all destinations have the full subpage set — Las Varas, Zacualpan, Platanitos, Playa Chila, Playa del Toro, and Playa las Tortugas currently only have a main page (Platanitos also has gastronomía). When adding features, don't assume the full set exists.
@@ -48,7 +48,6 @@ Subpages load [js/main.js](js/main.js) instead of `map.js`. It provides:
 
 ## Conventions worth knowing
 
-- **Folder name vs. URL slug mismatch:** the folder is [locations/la-peñita/](locations/la-peñita/) (with ñ) but [sitemap.xml](sitemap.xml) lists the URLs as `la-penita/` (without ñ), and [js/map.js:30](js/map.js#L30) points to `locations/la-peñita/penita.html`. When adding links or sitemap entries, mirror the existing inconsistency rather than "fixing" it in isolation — any rename has to be done across `map.js`, the folder, every cross-link, and the sitemap in one pass.
 - **Images use `loading="lazy"`** everywhere except the hero background (which is a CSS `background-image`, so the attribute doesn't apply). Keep new `<img>` tags lazy.
 - **SEO:** [sitemap.xml](sitemap.xml) is hand-maintained. Any new page must be added there with an appropriate `<priority>` (main destination page = 0.9, content subpage = 0.8, secondary = 0.7).
 - **Spanish-only content.** UI strings, comments, and commit messages in this repo are in Spanish — follow the existing style when editing user-facing text.
