@@ -363,6 +363,21 @@
         .event-desc {
             white-space: pre-line;
         }
+
+        .recurring-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(155, 89, 182, 0.3);
+        }
     </style>
 </head>
 
@@ -446,14 +461,44 @@
                 return eventoNormalizado.getTime() < hoyNormalizado.getTime();
             }
 
-            // 6. CARGA INICIAL
+            // 6. FUNCIÓN: Obtener primer domingo de un mes
+            function obtenerPrimerDomingo(mes, anio) {
+                let fecha = new Date(anio, mes, 1);
+                while (fecha.getDay() !== 0) {
+                    fecha.setDate(fecha.getDate() + 1);
+                }
+                return fecha.toISOString().split('T')[0];
+            }
+
+            // 6.5 FUNCIÓN: Expandir eventos recurrentes
+            function expandirEventosRecurrentes(eventos) {
+                let eventosExpandidos = [];
+
+                eventos.forEach(evento => {
+                    if (evento.es_recurrente && evento.tipo_recurrencia === 'primer_domingo') {
+                        // Generar una instancia para cada mes
+                        for (let mes = 0; mes < 12; mes++) {
+                            const fechaPrimerDomingo = obtenerPrimerDomingo(mes, 2026);
+                            eventosExpandidos.push({
+                                ...evento,
+                                fecha: fechaPrimerDomingo,
+                                es_instancia_recurrente: true
+                            });
+                        }
+                    } else {
+                        // Eventos normales (no recurrentes)
+                        eventosExpandidos.push(evento);
+                    }
+                });
+
+                return eventosExpandidos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+            }
+
+            // 6.5.5 CARGA INICIAL
             async function fetchEvents() {
                 const { data: eventos, error } = await _supabase
                     .from('eventos')
-                    .select('*')
-                    .gte('fecha', '2026-01-01')
-                    .lte('fecha', '2026-12-31')
-                    .order('fecha', { ascending: true });
+                    .select('*');
 
                 if (error) {
                     console.error('Error Supabase:', error);
@@ -461,7 +506,8 @@
                     return;
                 }
 
-                todosLosEventos = eventos;
+                // Expandir eventos recurrentes
+                todosLosEventos = expandirEventosRecurrentes(eventos);
                 actualizarVista();
             }
 
@@ -476,7 +522,10 @@
                 const eventosFiltrados = todosLosEventos.filter(evento => {
                     const fechaEvento = new Date(evento.fecha + "T00:00:00");
 
-                    if (eventoYaPaso(evento.fecha)) {
+                    // Para eventos recurrentes, permitir mostrarlos incluso si ya pasaron
+                    const esEventoRecurrente = evento.es_instancia_recurrente === true;
+
+                    if (!esEventoRecurrente && eventoYaPaso(evento.fecha)) {
                         return false;
                     }
 
@@ -518,12 +567,18 @@
 
                     const isToday = esEventoHoy(ev.fecha);
                     const isCancelled = ev.cancelado === true;
+                    const isRecurring = ev.es_instancia_recurrente === true;
 
                     let statusBadgeHTML = '';
                     if (isCancelled) {
                         statusBadgeHTML = '<div class="cancelled-badge"><i class="fas fa-ban"></i> CANCELADO</div>';
                     } else if (isToday) {
                         statusBadgeHTML = '<div class="today-badge">HOY</div>';
+                    }
+
+                    let recurringBadgeHTML = '';
+                    if (isRecurring) {
+                        recurringBadgeHTML = '<div class="recurring-badge"><i class="fas fa-repeat"></i> Mensual</div>';
                     }
 
                     const cardClass = isCancelled ? 'event-card cancelled' : 'event-card';
@@ -547,6 +602,7 @@
                         <div class="event-image" style="background-image: url('${imagen}');">
                             ${overlayHTML}
                             ${statusBadgeHTML}
+                            ${recurringBadgeHTML}
                             <div class="date-badge">
                                 <span class="date-day">${dia}</span>
                                 <span class="date-month">${mesCorto}</span>
