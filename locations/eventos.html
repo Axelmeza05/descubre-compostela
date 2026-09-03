@@ -488,14 +488,22 @@
                 return hoyNormalizado.getTime() === eventoNormalizado.getTime();
             }
 
-            // 5. FUNCIÓN: Verificar si el evento ya pasó
-            function eventoYaPaso(fechaEvento) {
+            // 5. FUNCIÓN: Verificar si el evento ya expiró
+            // El evento sigue visible hasta 30 días después de su fecha
+            const DIAS_VISIBLE_TRAS_EVENTO = 30;
+
+            function eventoExpirado(fechaEvento) {
                 const hoy = new Date();
                 const hoyNormalizado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
                 const eventoDate = new Date(fechaEvento + 'T00:00:00');
                 const eventoNormalizado = new Date(eventoDate.getFullYear(), eventoDate.getMonth(), eventoDate.getDate());
 
-                return eventoNormalizado.getTime() < hoyNormalizado.getTime();
+                const MS_POR_DIA = 1000 * 60 * 60 * 24;
+                const diasTranscurridos = Math.round(
+                    (hoyNormalizado.getTime() - eventoNormalizado.getTime()) / MS_POR_DIA
+                );
+
+                return diasTranscurridos > DIAS_VISIBLE_TRAS_EVENTO;
             }
 
             // 6. FUNCIÓN: Obtener primer domingo de un mes
@@ -562,7 +570,7 @@
                     // Para eventos recurrentes, permitir mostrarlos incluso si ya pasaron
                     const esEventoRecurrente = evento.es_instancia_recurrente === true;
 
-                    if (!esEventoRecurrente && eventoYaPaso(evento.fecha)) {
+                    if (!esEventoRecurrente && eventoExpirado(evento.fecha)) {
                         return false;
                     }
 
